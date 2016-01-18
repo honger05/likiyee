@@ -27,7 +27,7 @@ module.exports = {
   },
   devtool: 'eval',
   resolve: {
-    extensions: ['', '.js', '.json', '.coffee']
+    extensions: ['', '.js', 'jsx', '.json', '.coffee']
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -57,6 +57,10 @@ module.exports = {
   ],
   module: {
     loaders: [
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'babel'
+      },
       {
         test: /\.less$/,
         loader: 'style!css!less'

@@ -17,7 +17,7 @@ module.exports = {
     chunkFilename: './script/[id].chunk.js'
   },
   resolve: {
-    extensions: ['', '.js', '.json', '.coffee']
+    extensions: ['', '.js', 'jsx', '.json', '.coffee']
   },
   devtool: 'source-map',
   plugins: [
