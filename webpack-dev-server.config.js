@@ -27,8 +27,8 @@ var devConfig = {
   },
   output: {
     path: distPath,
-    filename: './script/[name].bundle.js',
-    chunkFilename: './script/[id].chunk.js'
+    filename: './scripts/[name].bundle.js',
+    chunkFilename: './scripts/[id].chunk.js'
   },
 
   // 页面中引入
@@ -48,7 +48,8 @@ var devConfig = {
   resolve: {
     extensions: ["", ".js", ".jsx", ".es6", "css", "scss", "png", "jpg", "jpeg"],
     alias: {
-      'jquery': path.join(config.path.src, '/assets/jquery')
+      'jquery': path.join(config.path.src, '/assets/jquery'),
+      'utils': path.join(config.path.src, '/utilities/utils')
     }
   },
   plugins: [
@@ -68,7 +69,7 @@ var devConfig = {
       chunks: route
     }),
 
-    new ExtractTextPlugin('./style/[name].css'),
+    new ExtractTextPlugin('./styles/[name].css'),
 
     new webpack.NoErrorsPlugin(),
 
@@ -94,8 +95,7 @@ var devConfig = {
         loader: 'style!css!autoprefixer'
       },{
         test: /\.(jpg|png|gif)$/i,
-        loader: "url-loader?limit=1000&name=img/[name]-[hash:10].[ext]",
-        include: path.resolve(config.path.src)
+        loader: "url-loader?limit=1000&name=img/[name]-[hash:10].[ext]"
       },
       {
         test: /\.html$/,
@@ -119,10 +119,9 @@ route.forEach(function(item) {
   var htmlPlugin = new HtmlWebpackPlugin({
     filename: item + '.html',
     template: 'src/tmpl/' + item + '.html',
-    title: item,
     hash: true,
-    chunks: [item],
-    inject: 'body'
+    inject: 'body',
+    chunks: [ item ]
   })
 
   devConfig.plugins.push(htmlPlugin)
