@@ -1,9 +1,6 @@
 
+require('amazeui/less/amazeui.less')
 require('../../common/common.scss')
-
-var $ = require('jquery');
-
-window.jQuery = $;
 
 $('.am-form').submit(function(ev) {
   ev.preventDefault();

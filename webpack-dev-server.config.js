@@ -6,12 +6,24 @@ var TransferWebpackPlugin = require('transfer-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = {
+var config = {
+  env: process.env.NODE_ENV,
+  path: {
+    src: path.resolve(__dirname, "src/www"),
+    app: path.resolve(__dirname, "src/app"),
+    dist: path.resolve(__dirname, "dist"),
+    pub: path.resolve(__dirname, "pub")
+  },
+  defaultPath: "http://www.yy.com/",
+  cdn: "http://www.yy.com"
+}
+
+var route = ['index', 'login']
+
+var devConfig = {
   entry: {
     devServer: 'webpack/hot/dev-server',
-    vendor: ['jquery'],
-    index: './src/app/components/index/index.js',
-    login: './src/app/components/login/login.js'
+    common: ['jquery', 'amazeui']
   },
   output: {
     path: distPath,
@@ -34,36 +46,31 @@ module.exports = {
   },
   devtool: 'eval',
   resolve: {
-    extensions: ['', '.js', 'jsx', '.json', '.coffee']
+    extensions: ["", ".js", ".jsx", ".es6", "css", "scss", "png", "jpg", "jpeg"],
+    alias: {
+      'jquery': path.join(config.path.src, '/assets/jquery')
+    }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
 
-    // new webpack.ProvidePlugin({
-    //   $: "jquery",
-    //   jQuery: "jquery",
-    //   "window.jQuery": "jquery"
-    // }),
+    new webpack.optimize.OccurenceOrderPlugin(),
 
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
-
-    new HtmlWebpackPlugin({
-      title: 'index',
-      filename: 'index.html',
-      hash: true,
-      template: './src/tmpl/index.html',
-      chunks: ['index'],
-      inject: 'body'
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
     }),
 
-    new HtmlWebpackPlugin({
-      title: 'login',
-      filename: 'login.html',
-      hash: true,
-      template: './src/tmpl/login.html',
-      chunks: ['login'],
-      inject: 'body'
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "common",
+      filename: "scripts/common.js",
+      chunks: route
     }),
+
+    new ExtractTextPlugin('./style/[name].css'),
+
+    new webpack.NoErrorsPlugin(),
 
     new TransferWebpackPlugin([
       {from: 'www'}
@@ -72,31 +79,53 @@ module.exports = {
   ],
   module: {
     loaders: [
-      {
-        test: /\.(js|jsx)$/,
-        loader: 'babel'
-      },
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   loader: 'babel'
+      // },
       {
         test: /\.less$/,
-        loader: 'style!css!less'
+        loader: 'style!css!autoprefixer!less'
       },{
         test: /\.scss$/,
-        loader: 'style!css!sass'
+        loader: 'style!css!autoprefixer!sass'
       },{
         test: /\.css$/,
         loader: 'style!css!autoprefixer'
       },{
-        test: /\.(png|jpg|gif)$/,
-        loader: 'url?limit=2500000'
+        test: /\.(jpg|png|gif)$/i,
+        loader: "url-loader?limit=1000&name=img/[name]-[hash:10].[ext]",
+        include: path.resolve(config.path.src)
       },
       {
         test: /\.html$/,
         loader: 'html'
       },
       {
-        test: /\.(ttf|woff|woff2|eot)$/,
-        loader: 'url?limit=100000'
+        test: path.join(config.path.src, '/assets/jquery'),
+        loader: 'expose?jQuery'
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,
+        loader: 'url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[ext]'
       }
     ]
   }
 }
+
+route.forEach(function(item) {
+  devConfig.entry[item] = path.join(config.path.app, '/components/'+ item +'/'+ item +'.js')
+
+  var htmlPlugin = new HtmlWebpackPlugin({
+    filename: item + '.html',
+    template: 'src/tmpl/' + item + '.html',
+    title: item,
+    hash: true,
+    chunks: [item],
+    inject: 'body'
+  })
+
+  devConfig.plugins.push(htmlPlugin)
+})
+
+module.exports = devConfig
