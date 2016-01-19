@@ -9,6 +9,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {
     devServer: 'webpack/hot/dev-server',
+    vendor: ['jquery'],
     index: './src/app/components/index/index.js',
     login: './src/app/components/login/login.js'
   },
@@ -17,6 +18,12 @@ module.exports = {
     filename: './script/[name].bundle.js',
     chunkFilename: './script/[id].chunk.js'
   },
+
+  // 页面中引入
+  // externals: {
+  //   'jquery': 'window.jQuery',
+  //   '$': 'window.jQuery'
+  // },
 
   devServer: {
     contentBase: 'src/www',
@@ -31,6 +38,14 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+
+    // new webpack.ProvidePlugin({
+    //   $: "jquery",
+    //   jQuery: "jquery",
+    //   "window.jQuery": "jquery"
+    // }),
+
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
 
     new HtmlWebpackPlugin({
       title: 'index',
@@ -79,7 +94,7 @@ module.exports = {
         loader: 'html'
       },
       {
-        test: /\.(ttf|woff|woff2)$/,
+        test: /\.(ttf|woff|woff2|eot)$/,
         loader: 'url?limit=100000'
       }
     ]

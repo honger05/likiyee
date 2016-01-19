@@ -69,7 +69,7 @@ module.exports = {
         loader: 'html'
       },
       {
-        test: /\.ttf$/,
+        test: /\.(ttf|woff|woff2|eot)$/,
         loader: 'url?limit=100000'
       }
     ]

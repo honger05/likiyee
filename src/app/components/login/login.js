@@ -1,6 +1,12 @@
 
-require('../../common/icon.css')
-require('../../../../node_modules/material-design-lite/material.css')
-require('../../../../node_modules/material-design-lite/material.js')
+require('../../common/common.scss')
 
-console.log('loginsdsd')
+var $ = require('jquery');
+
+window.jQuery = $;
+
+$('.am-form').submit(function(ev) {
+  ev.preventDefault();
+  $.AMUI.progress.start();
+  // document.location.href = 'index.html'
+})

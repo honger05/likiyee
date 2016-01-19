@@ -1,67 +1,75 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>login</title>
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <!-- <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png"> -->
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Hello Amaze UI</title>
 
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-    <!-- <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png"> -->
+  <!-- Set render engine for 360 browser -->
+  <meta name="renderer" content="webkit">
 
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <!-- <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png"> -->
-    <meta name="msapplication-TileColor" content="#3372DF">
+  <!-- No Baidu Siteapp-->
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
-  </head>
-  <body>
+  <link rel="icon" type="image/png" href="assets/i/favicon.png">
 
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
 
-      <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <!-- Title -->
-          <span class="mdl-layout-title">展业核心系统</span>
-          <!-- Add spacer, to align navigation to the right -->
-        </div>
-      </header>
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
 
-      <main class="mdl-layout__content">
-        <div class="page-content">
-
-          <form action="#">
-            <div class="mdl-grid">
-              <div class="mdl-grid mdl-grid--4-col">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="sample3">
-                  <label class="mdl-textfield__label" for="sample3">账号</label>
-                </div>
-              </div>
-              <div class="mdl-grid mdl-grid--4-col">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
-                  <label class="mdl-textfield__label" for="sample4">密码</label>
-                  <span class="mdl-textfield__error">必须输入数字</span>
-                </div>
-              </div>
-              <div class="mdl-grid mdl-grid--4-col">
-                <button id="loginBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-                  登陆
-                </button>
-              </div>
-            </div>
-          </form>
-
-        </div>
-      </main>
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+  <link rel="stylesheet" href="/assets/amazeui/css/amazeui.min.css">
+</head>
+<body>
+  <div class="header">
+    <div class="am-g yj-header">
+      <h1>展业核心系统</h1>
     </div>
+  </div>
+  <div class="am-g">
+    <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+      <br>
+      <h3>系统登录</h3>
+      <hr>
+      <form method="post" class="am-form">
+        <label for="account">账号:</label>
+        <input type="text" name="" id="account" value="">
+        <br>
+        <label for="password">密码:</label>
+        <input type="password" name="" id="password" value="">
+        <br>
+        <div class="am-cf">
+          <input type="submit" value="登 录" class="am-btn am-btn-primary am-btn-sm am-btn-block">
+        </div>
+      </form>
+      <hr>
+      <p class="yj-cp">© 2016 友金所核心开发部门.</p>
+    </div>
+  </div>
 
-  </body>
+
+
+
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="vendor.bundle.js"></script>
+<!-- <script src="/assets/jquery.js"></script> -->
+</body>
+<script src="/assets/amazeui/js/amazeui.js"></script>
 </html>
