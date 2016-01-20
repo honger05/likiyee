@@ -18,7 +18,10 @@ var config = {
   cdn: "http://www.yy.com"
 }
 
-var route = ['index', 'login', 'withheld']
+var route = [
+  'index', 'login', 'withheld', 'dowithheld',
+  'survey', 'dosurvey', 'modifypwd'
+]
 
 var devConfig = {
   entry: {

@@ -1,0 +1,83 @@
+
+<!doctype html>
+<html class="no-js">
+<%= require('html!./header.html') %>
+<body>
+
+  <header class="am-header am-header-default">
+    <div class="am-header-nav am-header-left">
+      <a href="survey.html"><i class="am-icon-chevron-left"></i></a>
+    </div>
+    <h1 class="am-header-title">上传调查报告</h1>
+    <div class="am-header-nav am-header-right">
+      <a href="#"><i class="am-icon-check"></i>提交</a>
+    </div>
+  </header>
+
+  <div class="am-panel am-panel-default">
+    <div class="am-panel-hd">
+      现场调查信息
+    </div>
+    <div class="am-panel-bd">
+      <div class="yj-form">
+        <div class="yj-form-item">
+          <label for="" class="yj-label">住宅情况:</label>
+          <div class="yj-form-text" style="margin:0">
+            <div class="am-form-group am-form-file">
+              <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                <i class="am-icon-cloud-upload"></i> 选择要上传的图片
+              </button>
+              <input id="doc-form-file" type="file" multiple>
+            </div>
+            <div id="file-list"></div>
+          </div>
+        </div>
+        <div class="yj-form-item">
+          <label for="" class="yj-label">经营住址情况:</label>
+          <div class="yj-form-text" style="margin:0">
+            <div class="am-form-group am-form-file">
+              <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                <i class="am-icon-cloud-upload"></i> 选择要上传的图片
+              </button>
+              <input id="doc-form-file" type="file" multiple>
+            </div>
+            <div id="file-list"></div>
+          </div>
+        </div>
+        <div class="yj-form-item">
+          <label for="" class="yj-label">备注:</label>
+          <div class="yj-form-text">
+            <textarea class="" rows="5" id="doc-ta-1" placeholder="最多输入200个字符"></textarea>
+          </div>
+        </div>
+        <div class="yj-form-item">
+          <label for="" class="yj-label">申请编号:</label>
+          <p class="yj-form-text">AI20151230000058</p>
+        </div>
+        <div class="yj-form-item">
+          <label for="" class="yj-label">姓名:</label>
+          <p class="yj-form-text">YJS20151230000058</p>
+        </div>
+        <div class="yj-form-item">
+          <label for="" class="yj-label">出生日期:</label>
+          <p class="yj-form-text">1990/08/13</p>
+        </div>
+        <div class="yj-form-item">
+          <label for="" class="yj-label">申请金额:</label>
+          <p class="yj-form-text"><span class="am-rmb">8571.85</span>元</p>
+        </div>
+        <div class="yj-form-item">
+          <label for="" class="yj-label">核定金额:</label>
+          <p class="yj-form-text"><span class="am-rmb">8571.85</span>元</p>
+        </div>
+        <div class="yj-form-item">
+          <label for="" class="yj-label">问题描述:</label>
+          <p class="yj-form-text">补件</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/common.js"></script>
+</body>
+</html>
