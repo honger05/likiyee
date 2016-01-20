@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "amazeui": "^2.5.1",
+    "font-awesome": "^4.5.0",
     "jquery": "^2.2.0",
     "material-design-lite": "^1.0.6",
     "react": "^0.14.6",
@@ -9,7 +10,7 @@
   },
   "scripts": {
     "build": "webpack --config webpack-production.config.js --progress --colors",
-    "dev": "webpack-dev-server --config webpack-dev-server.config.js --progress --inline --colors"
+    "dev": "webpack-dev-server --config webpack-dev-server.config.js --progress --inline --colors --host 0.0.0.0"
   },
   "devDependencies": {
     "amazeui-touch": "0.1.0-beta2",
@@ -28,7 +29,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "html-loader": "^0.4.0",
-    "html-webpack-plugin": "^1.7.0",
+    "html-webpack-plugin": "^2.6.5",
     "less": "^2.5.3",
     "less-loader": "^2.2.2",
     "node-sass": "^3.4.2",

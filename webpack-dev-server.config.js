@@ -18,7 +18,7 @@ var config = {
   cdn: "http://www.yy.com"
 }
 
-var route = ['index', 'login']
+var route = ['index', 'login', 'withheld']
 
 var devConfig = {
   entry: {
@@ -97,10 +97,10 @@ var devConfig = {
         test: /\.(jpg|png|gif)$/i,
         loader: "url-loader?limit=1000&name=img/[name]-[hash:10].[ext]"
       },
-      {
-        test: /\.html$/,
-        loader: 'html'
-      },
+      // {
+      //   test: /\.html$/,
+      //   loader: 'html'
+      // },
       {
         test: path.join(config.path.src, '/assets/jquery'),
         loader: 'expose?jQuery'

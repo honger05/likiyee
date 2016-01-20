@@ -1,0 +1,55 @@
+
+<!doctype html>
+<html class="no-js">
+<%= require('html!./header.html') %>
+<body>
+
+  <header class="am-header am-header-default">
+    <div class="am-header-nav am-header-left">
+      <a href="index.html"><i class="am-icon-chevron-left"></i></a>
+    </div>
+    <h1 class="am-header-title">预扣款</h1>
+  </header>
+
+  <form class="am-form" id="searchForm">
+    <fieldset>
+      <legend>查询条件</legend>
+
+      <div class="am-form-group">
+        <input type="text" class="" id="doc-ipt-cid-1" placeholder="身份证后四位">
+      </div>
+
+      <div class="am-form-group">
+        <input type="text" class="" id="doc-ipt-name-1" placeholder="借款人姓名">
+      </div>
+
+      <p>
+        <button type="submit" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom">
+          <i class="am-icon-search"></i> 查询
+        </button>
+      </p>
+
+    </fieldset>
+  </form>
+
+  <ul class="am-list item-content am-padding-xs">
+    <li>
+      <a href="#">
+        <div class="item-main">
+          <div class="item-title-row">
+            <h3 class="item-title">LA2015916000015</h3>
+            <i class="icon am-icon-angle-right am-fr"></i>
+            <div class="item-after">YJS20150529000050</div>
+          </div>
+          <div class="item-subtitle">
+            <div class="item-subtitle-l">身份证后四位：<span class="am-cid">0116</span></div>
+            <div class="item-subtitle-r">应还金额：<span class="am-rmb">10742.58</span> 元</div>
+          </div>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+  <script src="scripts/common.js"></script>
+</body>
+</html>

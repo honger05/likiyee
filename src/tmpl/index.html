@@ -1,54 +1,44 @@
 
 <!doctype html>
 <html class="no-js">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Hello Amaze UI</title>
-
-  <!-- Set render engine for 360 browser -->
-  <meta name="renderer" content="webkit">
-
-  <!-- No Baidu Siteapp-->
-  <meta http-equiv="Cache-Control" content="no-siteapp"/>
-
-  <!-- <link rel="icon" type="image/png" href="assets/i/favicon.png"> -->
-
-  <!-- Add to homescreen for Chrome on Android -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <!-- <link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png"> -->
-
-  <!-- Add to homescreen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
-  <!-- <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png"> -->
-
-  <!-- Tile icon for Win8 (144x144 + tile color) -->
-  <!-- <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png"> -->
-  <meta name="msapplication-TileColor" content="#0e90d2">
-</head>
+<%= require('html!./header.html') %>
 <body>
 
-  <div class="am-header am-header-default">
-    <h1 class="am-header-title">展业核心系统</h1>
+  <header class="am-header am-header-default">
+    <h1 class="am-header-title">核心展业系统</h1>
     <div class="am-header-nav am-header-right">
       <a href="login.html"><i class="am-icon-sign-out"></i></a>
     </div>
-  </div>
+  </header>
 
   <div class="am-g">
     <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
       <br>
       <ul class="am-list am-list-border">
-        <li><a href="#"><i class="am-icon-home am-icon-fw"></i> 预扣款</a></li>
-        <li><a href="#"> <i class="am-icon-book am-icon-fw"></i> 预期扣款</a></li>
-        <li><a href="#"><i class="am-icon-pencil am-icon-fw"></i>上传现场调查报告</a></li>
-        <li><a href="#"> <i class="am-icon-book am-icon-fw"></i> 修改密码</a></li>
+        <li class="am-animation-slide-bottom">
+          <a href="withheld.html">
+            <i class="am-icon-credit-card-alt am-icon-fw"></i> 预扣款
+            <i class="am-icon-angle-right am-fr"></i>
+          </a>
+        </li>
+        <li class="am-animation-slide-bottom am-animation-delay-1">
+          <a href="#">
+            <i class="am-icon-calendar-minus-o am-icon-fw"></i> 预期扣款
+            <i class="am-icon-angle-right am-fr"></i>
+          </a>
+        </li>
+        <li class="am-animation-slide-bottom am-animation-delay-1">
+          <a href="#">
+            <i class="am-icon-cloud-upload am-icon-fw"></i> 上传现场调查报告
+            <i class="am-icon-angle-right am-fr"></i>
+          </a>
+        </li>
+        <li class="am-animation-slide-bottom am-animation-delay-1">
+          <a href="#">
+            <i class="am-icon-edit am-icon-fw"></i> 修改密码
+            <i class="am-icon-angle-right am-fr"></i>
+          </a>
+        </li>
       </ul>
     </div>
   </div>

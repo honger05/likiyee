@@ -1,14 +1,12 @@
 
-require('amazeui/less/amazeui.less')
+var Utils = require('utils')
 require('../../common/common.scss')
 
-var Utils = require('utils')
-
-$('.am-form').submit(function(ev) {
+$('#loginForm').submit(function(ev) {
   ev.preventDefault()
-  $.AMUI.progress.start()
+  $.AMUI.progress.set(1.0)
   setTimeout(function() {
     $.AMUI.progress.done()
     document.location.href = 'index.html'
-  }, 1500)
+  }, 500)
 })

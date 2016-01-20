@@ -1,3 +1,3 @@
 
-require('amazeui/less/amazeui.less')
+var Utils = require('utils')
 require('../../common/common.scss')
