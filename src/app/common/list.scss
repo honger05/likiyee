@@ -1,0 +1,23 @@
+
+$color: #999;
+
+.item-content {
+  margin-left: 10px;
+
+  .item-title {
+    color: #000;
+    margin: 0 0 0.6rem 0;
+  }
+
+  .item-after {
+    color: $color;
+  }
+
+  .item-subtitle-l {
+    color: $color;
+  }
+
+  .item-subtitle-r {
+    color: $color;
+  }
+}

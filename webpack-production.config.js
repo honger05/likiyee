@@ -18,7 +18,10 @@ var config = {
   cdn: "http://www.yy.com"
 }
 
-var route = ['index', 'login']
+var route = [
+  'index', 'login', 'withheld', 'dowithheld',
+  'survey', 'dosurvey', 'modifypwd'
+]
 
 var proConfig = {
   entry: {
@@ -80,10 +83,10 @@ var proConfig = {
         loader: "url-loader?limit=1000&name=img/[name]-[hash:10].[ext]",
         include: path.resolve(config.path.src)
       },
-      {
-        test: /\.html$/,
-        loader: 'html'
-      },
+      // {
+      //   test: /\.html$/,
+      //   loader: 'html'
+      // },
       {
         test: path.join(config.path.src, '/assets/jquery'),
         loader: 'expose?jQuery'
