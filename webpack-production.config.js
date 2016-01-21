@@ -55,9 +55,18 @@ var proConfig = {
       "window.jQuery": "jquery"
     }),
 
-    new ExtractTextPlugin('./styles/[name].css'),
+    new ExtractTextPlugin('[name].css'),
 
     new webpack.NoErrorsPlugin(),
+
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      mangle: {
+        except: ['jQuery', '$', 'exports', 'require']
+      }
+    }),
 
     new TransferWebpackPlugin([
       {from: 'www'}
@@ -93,7 +102,7 @@ var proConfig = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,
-        loader: 'url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[ext]'
+        loader: 'url-loader?importLoaders=1&limit=1000&name=fonts/[name].[ext]'
       }
     ]
   }

@@ -72,8 +72,6 @@ var devConfig = {
       chunks: route
     }),
 
-    new ExtractTextPlugin('./styles/[name].css'),
-
     new webpack.NoErrorsPlugin(),
 
     new TransferWebpackPlugin([

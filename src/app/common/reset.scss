@@ -1,4 +1,14 @@
 
+.am-header {
+  position: fixed;
+  top: 0;
+  z-index: 99999;
+}
+
+.am-container {
+  margin-top: 50px;
+}
+
 .am-header-default .am-header-nav > a {
   font-size: 20px;
 }

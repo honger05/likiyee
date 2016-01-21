@@ -1,21 +1,2 @@
-webpackJsonp([7],[
-/* 0 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function($) {
-	var Utils = __webpack_require__(3)
-	__webpack_require__(2)
-	
-	$('#doc-form-file').on('change', function() {
-	  var fileNames = '';
-	  $.each(this.files, function() {
-	    fileNames += '<span class="am-badge">' + this.name + '</span> ';
-	  });
-	  $('#file-list').html(fileNames);
-	});
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }
-]);
+webpackJsonp([7],[function(t,exports,e){(function($){function t(t,e){var n="";$.each(t.files,function(){i(this,40,40,function(t){n='<span class="am-badge"><img src="'+t+'"></span> ',$(e).append(n)})})}function i(t,e,i,n){var h=new Image,a=document.createElement("canvas"),c=a.getContext("2d");window.URL||window.webkitURL;h.onload=function(){if(h.width>e||h.height>i){var t=Math.max(h.width/e,h.height/i);a.width=h.width/t,a.height=h.height/t}else a.width=h.width,a.height=h.height;c.drawImage(h,0,0,h.width,h.height,0,0,a.width,a.height),n(a.toDataURL())};try{h.src=URL.createObjectURL(t)}catch(o){try{h.src=window.webkitURL.createObjectURL(t)}catch(s){console.error(s.message)}}}e(3);e(2),$("#up-house").on("change",function(){t(this,"#file-list-house")}),$("#up-address").on("change",function(){t(this,"#file-list-address")})}).call(exports,e(1))}]);
 //# sourceMappingURL=dosurvey.bundle.js.map

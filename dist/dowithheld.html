@@ -1,38 +1,7 @@
 
 <!doctype html>
 <html class="no-js">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>核心展业系统</title>
-
-  <!-- Set render engine for 360 browser -->
-  <meta name="renderer" content="webkit">
-
-  <!-- No Baidu Siteapp-->
-  <meta http-equiv="Cache-Control" content="no-siteapp"/>
-
-  <!-- <link rel="icon" type="image/png" href="assets/i/favicon.png"> -->
-
-  <!-- Add to homescreen for Chrome on Android -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <!-- <link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png"> -->
-
-  <!-- Add to homescreen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
-  <!-- <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png"> -->
-
-  <!-- Tile icon for Win8 (144x144 + tile color) -->
-  <!-- <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png"> -->
-  <meta name="msapplication-TileColor" content="#0e90d2">
-  <link rel="stylesheet" href="styles/common.css">
-</head>
-
+<head><link rel="stylesheet" href="common.css"><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content=""><meta name=keywords content=""><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>核心展业系统</title><meta name=renderer content=webkit><meta http-equiv=Cache-Control content="no-siteapp"><meta name=mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content="Amaze UI"><meta name=msapplication-TileColor content=#0e90d2>
 <body>
 
   <header class="am-header am-header-default">
@@ -42,53 +11,56 @@
     <h1 class="am-header-title">预扣款操作</h1>
   </header>
 
-  <form class="am-form" id="searchForm">
-    <fieldset>
-      <legend>输入扣款金额</legend>
+  <div class="am-container">
 
-      <div class="am-form-group">
-        <input type="text" class="" id="doc-ipt-cid-1" placeholder="扣款金额">
+    <form class="am-form" id="searchForm">
+      <fieldset>
+        <legend>输入扣款金额</legend>
+
+        <div class="am-form-group">
+          <input type="text" class="" id="doc-ipt-cid-1" placeholder="扣款金额">
+        </div>
+
+        <p>
+          <button type="submit" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom">
+            <i class="am-icon-submit"></i> 提交扣款
+          </button>
+        </p>
+
+      </fieldset>
+    </form>
+
+    <div class="am-panel am-panel-default">
+      <div class="am-panel-hd">
+        贷款详细信息
       </div>
-
-      <p>
-        <button type="submit" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom">
-          <i class="am-icon-submit"></i> 提交扣款
-        </button>
-      </p>
-
-    </fieldset>
-  </form>
-
-  <div class="am-panel am-panel-default">
-    <div class="am-panel-hd">
-      贷款详细信息
-    </div>
-    <div class="am-panel-bd">
-      <div class="yj-form">
-        <div class="yj-form-item">
-          <label for="" class="yj-label">借款人:</label>
-          <p class="yj-form-text">YJS20150910000116</p>
-        </div>
-        <div class="yj-form-item">
-          <label for="" class="yj-label">借据编号:</label>
-          <p class="yj-form-text">LA20150910000116</p>
-        </div>
-        <div class="yj-form-item">
-          <label for="" class="yj-label">身份证后四位:</label>
-          <p class="yj-form-text">0116</p>
-        </div>
-        <div class="yj-form-item">
-          <label for="" class="yj-label">还款日期:</label>
-          <p class="yj-form-text">2016/01/16</p>
-        </div>
-        <div class="yj-form-item">
-          <label for="" class="yj-label">总计应还:</label>
-          <p class="yj-form-text"><span class="am-rmb">8571.85</span>元</p>
+      <div class="am-panel-bd">
+        <div class="yj-form">
+          <div class="yj-form-item">
+            <label for="" class="yj-label">借款人:</label>
+            <p class="yj-form-text">YJS20150910000116</p>
+          </div>
+          <div class="yj-form-item">
+            <label for="" class="yj-label">借据编号:</label>
+            <p class="yj-form-text">LA20150910000116</p>
+          </div>
+          <div class="yj-form-item">
+            <label for="" class="yj-label">身份证后四位:</label>
+            <p class="yj-form-text">0116</p>
+          </div>
+          <div class="yj-form-item">
+            <label for="" class="yj-label">还款日期:</label>
+            <p class="yj-form-text">2016/01/16</p>
+          </div>
+          <div class="yj-form-item">
+            <label for="" class="yj-label">总计应还:</label>
+            <p class="yj-form-text"><span class="am-rmb">8571.85</span>元</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <script src="scripts/common.js"></script>
-<script src="./scripts/dowithheld.bundle.js?7c4498a384d7cb6806df"></script></body>
+<script src="./scripts/dowithheld.bundle.js?cff0fcb1cf87df03e7f8"></script></body>
 </html>

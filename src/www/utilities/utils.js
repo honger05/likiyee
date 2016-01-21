@@ -1,5 +1,4 @@
 require('amazeui/less/amazeui.less')
-require('font-awesome/less/font-awesome.less')
 
 var progress = $.AMUI.progress
 
