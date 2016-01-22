@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "amazeui": "^2.5.1",
+    "es6-promise": "^3.0.2",
     "font-awesome": "^4.5.0",
+    "handlebars": "^4.0.5",
     "jquery": "^2.2.0",
     "material-design-lite": "^1.0.6",
     "react": "^0.14.6",

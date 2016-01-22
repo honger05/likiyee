@@ -7,7 +7,7 @@
     <h1 class="am-header-title">核心展业系统</h1>
   </header>
 
-  <div class="am-container">
+  <div class="am-main">
 
     <div class="am-g">
       <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
@@ -22,7 +22,9 @@
           <input type="password" name="" id="password" value="">
           <br>
           <div class="am-cf">
-            <input type="submit" value="登 录" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom">
+            <input id="loginBtn" type="submit" value="登 录"
+            data-am-loading="{loadingText: '登陆中...'}"
+            class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom">
           </div>
         </form>
         <hr>
@@ -30,7 +32,7 @@
       </div>
     </div>
   </div>
-  
+
   <script src="scripts/common.js"></script>
 </body>
 </html>

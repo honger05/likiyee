@@ -11,7 +11,7 @@
     <h1 class="am-header-title">预扣款</h1>
   </header>
 
-  <div class="am-container">
+  <div class="am-main">
     <form class="am-form" id="searchForm">
       <fieldset>
         <legend>查询条件</legend>
@@ -25,7 +25,8 @@
         </div>
 
         <p>
-          <button type="submit" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom">
+          <button id="smtBtn" type="submit" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom"
+            data-am-loading="{loadingText: '努力查询中...'}">
             <i class="am-icon-search"></i> 查询
           </button>
         </p>

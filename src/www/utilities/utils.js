@@ -1,5 +1,7 @@
 require('amazeui/less/amazeui.less')
 
+require('./widgets.helper.js')
+
 var progress = $.AMUI.progress
 
 $(window).load(function() {

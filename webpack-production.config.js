@@ -25,7 +25,7 @@ var route = [
 
 var proConfig = {
   entry: {
-    common: ['jquery', 'amazeui']
+    common: ['jquery', 'handlebars', 'amazeui']
   },
   output: {
     path: distPath,
@@ -36,6 +36,7 @@ var proConfig = {
     extensions: ["", ".js", ".jsx", ".es6", "css", "scss", "png", "jpg", "jpeg"],
     alias: {
       'jquery': path.join(config.path.src, '/assets/jquery'),
+      'handlebars': path.join(config.path.src, '/assets/handlebars'),
       'utils': path.join(config.path.src, '/utilities/utils')
     }
   },
@@ -52,7 +53,7 @@ var proConfig = {
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
-      "window.jQuery": "jquery"
+      Handlebars: "handlebars"
     }),
 
     new ExtractTextPlugin('[name].css'),
@@ -96,6 +97,10 @@ var proConfig = {
       //   test: /\.html$/,
       //   loader: 'html'
       // },
+      {
+        test: path.join(config.path.src, '/assets/handlebars'),
+        loader: 'expose?Handlebars'
+      },
       {
         test: path.join(config.path.src, '/assets/jquery'),
         loader: 'expose?jQuery'

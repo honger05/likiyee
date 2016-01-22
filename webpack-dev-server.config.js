@@ -26,7 +26,7 @@ var route = [
 var devConfig = {
   entry: {
     devServer: 'webpack/hot/dev-server',
-    common: ['jquery', 'amazeui']
+    common: ['jquery', 'handlebars', 'amazeui']
   },
   output: {
     path: distPath,
@@ -52,6 +52,7 @@ var devConfig = {
     extensions: ["", ".js", ".jsx", ".es6", "css", "scss", "png", "jpg", "jpeg"],
     alias: {
       'jquery': path.join(config.path.src, '/assets/jquery'),
+      'handlebars': path.join(config.path.src, '/assets/handlebars'),
       'utils': path.join(config.path.src, '/utilities/utils')
     }
   },
@@ -61,9 +62,9 @@ var devConfig = {
     new webpack.optimize.OccurenceOrderPlugin(),
 
     new webpack.ProvidePlugin({
-      $: "jquery",
       jQuery: "jquery",
-      "window.jQuery": "jquery"
+      $: "jquery",
+      Handlebars: "handlebars"
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
@@ -105,6 +106,10 @@ var devConfig = {
       {
         test: path.join(config.path.src, '/assets/jquery'),
         loader: 'expose?jQuery'
+      },
+      {
+        test: path.join(config.path.src, '/assets/handlebars'),
+        loader: 'expose?Handlebars'
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,

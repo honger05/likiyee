@@ -11,7 +11,7 @@
     <h1 class="am-header-title">预扣款操作</h1>
   </header>
 
-  <div class="am-container">
+  <div class="am-main">
 
     <form class="am-form" id="searchForm">
       <fieldset>
@@ -22,7 +22,9 @@
         </div>
 
         <p>
-          <button type="submit" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom">
+          <button id="smtBtn" type="submit"
+            class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom"
+            data-am-loading="{loadingText: '正在扣款...'}">
             <i class="am-icon-submit"></i> 提交扣款
           </button>
         </p>
@@ -60,7 +62,19 @@
       </div>
     </div>
   </div>
-  
+
+  <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+    <div class="am-modal-dialog">
+      <div class="am-modal-bd">
+        确定扣款？
+      </div>
+      <div class="am-modal-footer">
+        <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+      </div>
+    </div>
+  </div>
+
   <script src="scripts/common.js"></script>
 </body>
 </html>
