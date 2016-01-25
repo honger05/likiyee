@@ -1,4 +1,6 @@
 
+var RSA_KEY_URL = 'ceis/a/getrsakey.do'
+
 var Utils = require('utils')
 require('../../common/common.scss')
 
@@ -10,4 +12,8 @@ $('#loginForm').submit(function(ev) {
     $.AMUI.progress.done()
     document.location.href = 'index.html'
   }, 1500)
+})
+
+$.post(RSA_KEY_URL, {}, function(data) {
+  console.log(data)
 })

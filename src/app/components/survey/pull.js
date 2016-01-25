@@ -6,8 +6,8 @@ var PullDown = function(element, opions) {
   var $pullUp = $main.find('#pull-up')
   var topOffset = -$pullDown.outerHeight()
 
-  this.compiler = require('./survey.hbs')
-  // this.compiler = Handlebars.compile($('#tpi-list-item').html())
+  // this.compiler = require('./survey.hbs')
+  this.compiler = Handlebars.compile($('#tpi-list-item').html())
   // this.prev = this.next = this.start = options.params.start
   // this.total = null
 

@@ -1,9 +1,9 @@
 
 <!doctype html>
 <html class="no-js">
-<head><link rel="stylesheet" href="common.css"><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content=""><meta name=keywords content=""><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>核心展业系统</title><meta name=renderer content=webkit><meta http-equiv=Cache-Control content="no-siteapp"><meta name=mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content="Amaze UI"><meta name=msapplication-TileColor content=#0e90d2>
+<head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content=""><meta name=keywords content=""><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>核心展业系统</title><meta name=renderer content=webkit><meta http-equiv=Cache-Control content="no-siteapp"><meta name=mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content="Amaze UI"><meta name=msapplication-TileColor content=#0e90d2>
 <body>
-
+<link rel="stylesheet" href="common.css">
   <header class="am-header am-header-default">
     <div class="am-header-nav am-header-left">
       <a href="index.html"><i class="am-icon-chevron-left"></i></a>
@@ -11,7 +11,7 @@
     <h1 class="am-header-title">预扣款</h1>
   </header>
 
-  <div class="am-container">
+  <div class="am-main">
     <form class="am-form" id="searchForm">
       <fieldset>
         <legend>查询条件</legend>
@@ -25,7 +25,8 @@
         </div>
 
         <p>
-          <button type="submit" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom">
+          <button id="smtBtn" type="submit" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom"
+            data-am-loading="{loadingText: '努力查询中...'}">
             <i class="am-icon-search"></i> 查询
           </button>
         </p>
@@ -53,5 +54,5 @@
   </div>
 
   <script src="scripts/common.js"></script>
-<script src="./scripts/withheld.bundle.js?cff0fcb1cf87df03e7f8"></script></body>
+<script src="./scripts/withheld.bundle.js?cb9e45700c58212396f5"></script></body>
 </html>
