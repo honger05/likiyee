@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<%= require('html!./header.html') %>
+<body>
+<div class="page">
+  <header data-am-widget="header" class="am-header am-header-default">
+    <h1 class="am-header-title">
+      同城 - 音乐
+    </h1>
+  </header>
+
+  <div id="wrapper" data-am-widget="list_news"
+       class="am-list-news am-list-news-default">
+    <div class="am-list-news-bd">
+      <div class="pull-action loading" id="pull-down">
+        <span class="am-icon-arrow-down pull-label"
+              id="pull-down-label"> 下拉刷新</span>
+        <span class="am-icon-spinner am-icon-spin"></span>
+      </div>
+      <ul class="am-list" id="events-list">
+        <li class="am-list-item-desced">
+          <div class="am-list-item-text">
+            正在加载内容...
+          </div>
+        </li>
+      </ul>
+      <div class="pull-action" id="pull-up">
+        <span class="am-icon-arrow-down pull-label"
+              id="pull-up-label"> 上拉加载更多</span>
+        <span class="am-icon-spinner am-icon-spin"></span>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/x-handlebars-template" id="tpi-list-item">
+  {{#each this}}
+  <li class="am-list-item-desced" data-id="{{id}}">
+    <a href="{{alt}}" class="am-list-item-hd" target="_blank">{{title}}</a>
+
+    <div class="am-list-item-text">{{content}}</div>
+  </li>
+  {{/each}}
+</script>
+
+<script src="scripts/common.js"></script>
+</body>
+</html>
+<!--http://pnc.co.il/dev/iscroll-5-pull-to-refresh-and-infinite-demo.html-->

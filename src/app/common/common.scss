@@ -1,6 +1,23 @@
 
 @import './reset.scss';
 @import './list.scss';
+@import './pull.scss';
+
+html,
+body,
+.yj-page {
+  height: 100%;
+}
+
+.yj-header {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+}
+
+.yj-main {
+  margin-top: 50px;
+}
 
 .am-rmb {
   font-family: arial;
@@ -30,19 +47,6 @@
     display: inline-block;
     margin: 6px 0 0 0;
     font-size: 14px;
-  }
-}
-
-.yj-header {
-  font-size: 12px;
-  letter-spacing: 2px;
-  background: #0e90d2;
-  color: #fff;
-  text-align: center;
-  box-shadow: 0 2px 1px #0e90d2;
-
-  h1 {
-    margin: 0.6rem 0;
   }
 }
 
