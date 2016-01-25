@@ -104,6 +104,10 @@ var devConfig = {
       //   loader: 'html'
       // },
       {
+        test: /\.hbs$/,
+        loader: 'handlebars-loader'
+      },
+      {
         test: path.join(config.path.src, '/assets/jquery'),
         loader: 'expose?jQuery'
       },

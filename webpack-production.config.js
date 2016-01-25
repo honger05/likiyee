@@ -98,6 +98,10 @@ var proConfig = {
       //   loader: 'html'
       // },
       {
+        test: /\.hbs$/,
+        loader: 'handlebars-loader'
+      },
+      {
         test: path.join(config.path.src, '/assets/handlebars'),
         loader: 'expose?Handlebars'
       },

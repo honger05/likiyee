@@ -3,15 +3,21 @@ var PullDown = function(element, opions) {
   var $list = $main.find('#events-list')
   var $pullDown = $main.find('#pull-down')
   var $pullDownLabel = $main.find('#pull-down-label')
+  var $pullUp = $main.find('#pull-up')
   var topOffset = -$pullDown.outerHeight()
 
-  this.compiler = Handlebars.compile($('#tpi-list-item').html())
+  this.compiler = require('./survey.hbs')
+  // this.compiler = Handlebars.compile($('#tpi-list-item').html())
   // this.prev = this.next = this.start = options.params.start
   // this.total = null
 
   this.renderList = function(start, type) {
     var _this = this
     var $el = $pullDown
+
+    if (type === 'load') {
+      $el = $pullUp
+    }
 
     var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -20,6 +26,8 @@ var PullDown = function(element, opions) {
     setTimeout(function() {
       if (type === 'refresh') {
         $list.children('li').first().before(html)
+      } else if (type === 'load') {
+        $list.append(html)
       } else {
         $list.html(html)
       }
@@ -29,7 +37,11 @@ var PullDown = function(element, opions) {
       }, 100)
 
       _this.resetLoading($el)
-      _this.iScroll.scrollTo(0, topOffset, 800, $.AMUI.iScroll.utils.circular)
+
+      if (type !== 'load') {
+        _this.iScroll.scrollTo(0, topOffset, 800, $.AMUI.iScroll.utils.circular)
+      }
+
     }, 1000)
   }
 
@@ -62,12 +74,22 @@ var PullDown = function(element, opions) {
         _this.handlePullDown()
       }
       pullFormTop = false;
+
+      if (pullStart === this.y && (this.directionY === 1)) {
+        _this.handlePullUp()
+      }
     })
 
     this.handlePullDown = function() {
       console.log('handle pull down')
       this.setLoading($pullDown)
       this.renderList(null, 'refresh')
+    }
+
+    this.handlePullUp = function() {
+      console.log('handle pull up')
+      this.setLoading($pullUp)
+      this.renderList(null, 'load')
     }
   }
 }

@@ -8,8 +8,8 @@ var IScroll = $.AMUI.iScroll
 //   click: true
 // })
 
-var PullDown = require('./pulldown.js')
+var Pull = require('./pull.js')
 
-var pd = new PullDown()
+var pl = new Pull()
 
-pd.init()
+pl.init()

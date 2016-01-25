@@ -4,6 +4,8 @@ require('../../common/common.scss')
 require('./dosurvey.scss')
 var Promise = window.Promise || require('es6-promise').Promise
 
+// var myScroll = new $.AMUI.iScroll('#wrapper')
+
 $('#up-house').on('change', function() {
   displayImages(this.files, '#file-list-house', $(this).prev(), 'house')
 })
@@ -47,6 +49,7 @@ function displayImages(files, zoom, upBtn, name) {
     $(zoom).find('.am-gallery').pureview()
     setTimeout(function() {
       upBtn.button('reset')
+      // myScroll.refresh()
     }, 800)
   })
 
