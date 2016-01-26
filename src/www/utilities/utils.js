@@ -14,6 +14,8 @@ $(document).ready(function() {
 
 var Utils = {
 
+  CONTEXT_URL: 'ceis/a/',
+
   log: function(msg) {
     console.log(msg)
   }

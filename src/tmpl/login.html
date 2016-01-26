@@ -16,10 +16,11 @@
         <hr>
         <form class="am-form" id="loginForm">
           <label for="account">账号:</label>
-          <input type="text" name="" id="account" value="">
+          <input type="text" name="account" id="account" value="">
           <br>
           <label for="password">密码:</label>
-          <input type="password" name="" id="password" value="">
+          <input type="password" name="password" id="password" value="">
+          <input type="hidden" name="mobileLogin" value="true">
           <br>
           <div class="am-cf">
             <input id="loginBtn" type="submit" value="登 录"
@@ -30,6 +31,12 @@
         <hr>
         <p class="yj-cp">© 2016 友金所核心开发部门.</p>
       </div>
+    </div>
+  </div>
+
+  <div class="am-modal am-modal-no-btn" tabindex="-1" id="toast">
+    <div class="am-modal-dialog">
+      <div class="am-modal-bd" id="toast-cnt"></div>
     </div>
   </div>
 
