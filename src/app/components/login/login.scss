@@ -1,10 +1,14 @@
 
 #validateCodeDiv {
   display: none;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 
   #validateCode {
     display: inline-block!important;
     width: 50%;
   }
+}
+
+#loginBtn {
+  margin-top: 20px;
 }
