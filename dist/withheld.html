@@ -3,7 +3,7 @@
 <html class="no-js">
 <head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content=""><meta name=keywords content=""><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>核心展业系统</title><meta name=renderer content=webkit><meta http-equiv=Cache-Control content="no-siteapp"><meta name=mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content="Amaze UI"><meta name=msapplication-TileColor content=#0e90d2>
 <body>
-<link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="common.css">
   <header class="am-header am-header-default">
     <div class="am-header-nav am-header-left">
       <a href="index.html"><i class="am-icon-chevron-left"></i></a>
@@ -12,27 +12,27 @@
   </header>
 
   <div class="am-main">
-    <form class="am-form" id="searchForm">
-      <fieldset>
-        <legend>查询条件</legend>
-
-        <div class="am-form-group">
-          <input type="text" class="" id="doc-ipt-cid-1" placeholder="身份证后四位">
-        </div>
-
-        <div class="am-form-group">
-          <input type="text" class="" id="doc-ipt-name-1" placeholder="借款人姓名">
-        </div>
-
-        <p>
-          <button id="smtBtn" type="submit" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom"
-            data-am-loading="{loadingText: '努力查询中...'}">
-            <i class="am-icon-search"></i> 查询
-          </button>
-        </p>
-
-      </fieldset>
-    </form>
+    <div class="am-panel am-panel-default">
+      <div class="am-panel-hd">
+        查询条件
+      </div>
+      <div class="am-panel-bd">
+        <form class="am-form" id="searchForm">
+            <div class="am-form-group">
+              <input type="text" class="" id="doc-ipt-cid-1" placeholder="身份证后四位">
+            </div>
+            <div class="am-form-group">
+              <input type="text" class="" id="doc-ipt-name-1" placeholder="借款人姓名">
+            </div>
+            <p>
+              <button id="smtBtn" type="submit" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom"
+                data-am-loading="{loadingText: '努力查询中...'}">
+                <i class="am-icon-search"></i> 查询
+              </button>
+            </p>
+        </form>
+      </div>
+    </div>
 
     <ul class="am-list item-content am-padding-xs am-animation-slide-bottom am-animation-delay-1">
       <li>
@@ -54,5 +54,5 @@
   </div>
 
   <script src="scripts/common.js"></script>
-<script src="./scripts/withheld.bundle.js?cb9e45700c58212396f5"></script></body>
+<script src="./scripts/withheld.bundle.js?0ed4a69117296bf674de"></script></body>
 </html>

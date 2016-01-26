@@ -1,27 +1,32 @@
 
 <!doctype html>
-<html class="no-js">
+<html class="no-js"><head><link href="login.css?0ed4a69117296bf674de" rel="stylesheet"></head>
 <head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content=""><meta name=keywords content=""><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>核心展业系统</title><meta name=renderer content=webkit><meta http-equiv=Cache-Control content="no-siteapp"><meta name=mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content="Amaze UI"><meta name=msapplication-TileColor content=#0e90d2>
 <body>
-  <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="common.css">
+      <link rel="stylesheet" href="login.css">
   <header class="am-header am-header-default">
     <h1 class="am-header-title">核心展业系统</h1>
   </header>
-
   <div class="am-main">
-
-    <div class="am-g">
-      <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
-        <br>
-        <h3>系统登录</h3>
-        <hr>
+    <div class="am-panel am-panel-default">
+      <div class="am-panel-hd">
+        系统登录
+      </div>
+      <div class="am-panel-bd">
         <form class="am-form" id="loginForm">
-          <label for="account">账号:</label>
-          <input type="text" name="" id="account" value="">
+          <label for="account">用户名:</label>
+          <input type="text" name="username" id="username" value="">
           <br>
           <label for="password">密码:</label>
-          <input type="password" name="" id="password" value="">
+          <input type="password" name="password" id="password" value="">
+          <input type="hidden" name="mobileLogin" value="true">
           <br>
+          <div id="validateCodeDiv">
+            <input type="text" name="validateCode" id="validateCode" value="">
+            <!-- <img src="ceis/servlet/validateCodeServlet" alt="" /> -->
+            <a href="javascript:void(0)">看不清？</a>
+          </div>
           <div class="am-cf">
             <input id="loginBtn" type="submit" value="登 录"
             data-am-loading="{loadingText: '登陆中...'}"
@@ -34,6 +39,12 @@
     </div>
   </div>
 
+  <div class="am-modal am-modal-no-btn" tabindex="-1" id="toast">
+    <div class="am-modal-dialog">
+      <div class="am-modal-bd" id="toast-cnt"></div>
+    </div>
+  </div>
+
   <script src="scripts/common.js"></script>
-<script src="./scripts/login.bundle.js?cb9e45700c58212396f5"></script></body>
+<script src="./scripts/login.bundle.js?0ed4a69117296bf674de"></script></body>
 </html>
