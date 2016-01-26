@@ -12,27 +12,27 @@
   </header>
 
   <div class="am-main">
-    <form class="am-form" id="searchForm">
-      <fieldset>
-        <legend>查询条件</legend>
-
-        <div class="am-form-group">
-          <input type="text" class="" id="doc-ipt-cid-1" placeholder="身份证后四位">
-        </div>
-
-        <div class="am-form-group">
-          <input type="text" class="" id="doc-ipt-name-1" placeholder="借款人姓名">
-        </div>
-
-        <p>
-          <button id="smtBtn" type="submit" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom"
-            data-am-loading="{loadingText: '努力查询中...'}">
-            <i class="am-icon-search"></i> 查询
-          </button>
-        </p>
-
-      </fieldset>
-    </form>
+    <div class="am-panel am-panel-default">
+      <div class="am-panel-hd">
+        查询条件
+      </div>
+      <div class="am-panel-bd">
+        <form class="am-form" id="searchForm">
+            <div class="am-form-group">
+              <input type="text" class="" id="doc-ipt-cid-1" placeholder="身份证后四位">
+            </div>
+            <div class="am-form-group">
+              <input type="text" class="" id="doc-ipt-name-1" placeholder="借款人姓名">
+            </div>
+            <p>
+              <button id="smtBtn" type="submit" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom"
+                data-am-loading="{loadingText: '努力查询中...'}">
+                <i class="am-icon-search"></i> 查询
+              </button>
+            </p>
+        </form>
+      </div>
+    </div>
 
     <ul class="am-list item-content am-padding-xs am-animation-slide-bottom am-animation-delay-1">
       <li>

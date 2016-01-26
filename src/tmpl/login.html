@@ -6,22 +6,25 @@
   <header class="am-header am-header-default">
     <h1 class="am-header-title">核心展业系统</h1>
   </header>
-
   <div class="am-main">
-
-    <div class="am-g">
-      <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
-        <br>
-        <h3>系统登录</h3>
-        <hr>
+    <div class="am-panel am-panel-default">
+      <div class="am-panel-hd">
+        系统登录
+      </div>
+      <div class="am-panel-bd">
         <form class="am-form" id="loginForm">
-          <label for="account">账号:</label>
-          <input type="text" name="account" id="account" value="">
+          <label for="account">用户名:</label>
+          <input type="text" name="username" id="username" value="">
           <br>
           <label for="password">密码:</label>
           <input type="password" name="password" id="password" value="">
           <input type="hidden" name="mobileLogin" value="true">
           <br>
+          <div id="validateCodeDiv">
+            <input type="text" name="validateCode" id="validateCode" value="">
+            <!-- <img src="ceis/servlet/validateCodeServlet" alt="" /> -->
+            <a href="javascript:void(0)">看不清？</a>
+          </div>
           <div class="am-cf">
             <input id="loginBtn" type="submit" value="登 录"
             data-am-loading="{loadingText: '登陆中...'}"
