@@ -16,20 +16,20 @@
     <div class="am-g">
       <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
         <br>
-        <form class="am-form">
+        <form class="am-form" id="modify-form">
           <div class="am-form-group am-form-icon">
             <i class="am-icon-user-secret"></i>
-            <input type="text" class="am-form-field" placeholder="原始密码">
+            <input type="text" class="am-form-field" name="oldPassword" placeholder="原始密码">
           </div>
 
           <div class="am-form-group am-form-icon">
             <i class="am-icon-eye"></i>
-            <input type="password" class="am-form-field" placeholder="新密码">
+            <input type="password" class="am-form-field" name="newPassword" placeholder="新密码">
           </div>
 
           <div class="am-form-group am-form-icon">
             <i class="am-icon-eye"></i>
-            <input type="password" class="am-form-field" placeholder="确认新密码">
+            <input type="password" class="am-form-field" id="cfrPassword" placeholder="确认新密码">
           </div>
           <br>
           <div class="am-cf">
@@ -40,6 +40,12 @@
     </div>
   </div>
 
+  <div class="am-modal am-modal-no-btn" tabindex="-1" id="toast">
+    <div class="am-modal-dialog">
+      <div class="am-modal-bd" id="toast-cnt"></div>
+    </div>
+  </div>
+  
   <script src="scripts/common.js"></script>
 </body>
 </html>

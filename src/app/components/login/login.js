@@ -6,11 +6,7 @@ require('./login.scss')
 var RSAUtils = require('./rsautils')
 var CEIS = {}
 
-var RSA_KEY_URL = Utils.CONTEXT_URL + 'getrsakey.do'
-var LOGIN_URL = Utils.CONTEXT_URL + 'login'
-var VALIDATA_IMG_URL = 'ceis/servlet/validateCodeServlet'
-
-$.post(RSA_KEY_URL)
+$.post(Utils.URL.RSA_KEY)
  .done(function(data) {
   if (data && data.content) {
     CEIS.exponent = data.content.e;
@@ -31,7 +27,7 @@ $('#username').on('change', function() {
 
 $('#validateCodeDiv').on('click', 'a', function() {
   var img = $(this).prev()[0]
-  img.src = VALIDATA_IMG_URL + '?' + Math.random()
+  img.src = Utils.URL.VALIDATA_IMG + '?' + Math.random()
 })
 
 var $loginBtn = $('#loginBtn')
@@ -78,18 +74,21 @@ $('#loginForm').submit(function(ev) {
       $password.val(encryptedPwd);
     }
 
-    $.post(LOGIN_URL, $loginForm.serializeArray())
+    $.post(Utils.URL.LOGIN, $loginForm.serializeArray())
      .done(function(data) {
-       if (data && data.sessionid) {
-         CEIS.sessionid = data.sessionid;
-         CEIS.firstLogin = data.firstLogin;
-         if (data.firstLogin) {
+       if (data && data.status === 'success') {
+         CEIS.sessionid = data.content.sessionid;
+         CEIS.firstLogin = data.content.firstLogin;
+         Utils.storage.set('ceis', CEIS.sessionid)
+         if (CEIS.firstLogin) {
            $('#toast-cnt').html('首次登陆或密码过期，请修改密码！')
            $('#toast').modal('open')
+           Utils.forward('./modifypwd.html')
          }
          else {
            $('#toast-cnt').html('登录成功！')
            $('#toast').modal('open')
+           Utils.forward('./index.html')
          }
        }
        else {
@@ -98,14 +97,14 @@ $('#loginForm').submit(function(ev) {
          $('#toast').modal('open')
          effectDone()
 
-         if (data.shiroLoginFailure == 'org.apache.shiro.authc.AuthenticationException'){
-           $('#validateCodeDiv').show();
+         if (data.content && data.content.shiroLoginFailure == 'org.apache.shiro.authc.AuthenticationException'){
+           $('#validateCodeDiv').show()
          }
-         $('#validateCodeDiv a').click();
+         $('#validateCodeDiv a').click()
        }
      })
-     .always(function() {
-
+     .always(function(data) {
+       effectDone()
      })
 
     // setTimeout(function() {
