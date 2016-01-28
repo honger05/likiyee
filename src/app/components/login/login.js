@@ -3,8 +3,9 @@ var Utils = require('utils')
 require('../../common/common.scss')
 require('./login.scss')
 
-var RSAUtils = require('./rsautils')
 var CEIS = {}
+
+Utils.UI.toastinit()
 
 $.post(Utils.URL.RSA_KEY)
  .done(function(data) {
@@ -13,12 +14,6 @@ $.post(Utils.URL.RSA_KEY)
     CEIS.modulus = data.content.n;
   }
  })
-
-$('#toast').on('opened.modal.amui', function() {
-  setTimeout(function() {
-    $(this).modal('close')
-  }.bind(this), 1000)
-})
 
 $('#username').on('change', function() {
   var $username = $(this);
@@ -53,24 +48,21 @@ $('#loginForm').submit(function(ev) {
       vali_str = $.trim($validate.val())
 
   if (act_str === '') {
-    $('#toast-cnt').html('请填写用户名')
-    $('#toast').modal('open')
+    Utils.UI.toast('请填写用户名')
   }
   else if (pwd_str === '') {
-    $('#toast-cnt').html('请填写密码')
-    $('#toast').modal('open')
+    Utils.UI.toast('请填写密码')
   }
   else if ($('#validateCodeDiv').is(':visible') && vali_str === '') {
-    $('#toast-cnt').html('请填写验证码')
-    $('#toast').modal('open')
+    Utils.UI.toast('请填写验证码')
   }
   else {
     effectStart()
 
     var $loginForm = $(this)
     if (CEIS.exponent && CEIS.modulus) {
-      var key = RSAUtils.getKeyPair(CEIS.exponent, '', CEIS.modulus);
-      var encryptedPwd = RSAUtils.encryptedString(key, pwd_str);
+      var key = Utils.RSAUtils.getKeyPair(CEIS.exponent, '', CEIS.modulus);
+      var encryptedPwd = Utils.RSAUtils.encryptedString(key, pwd_str);
       $password.val(encryptedPwd);
     }
 
@@ -79,22 +71,19 @@ $('#loginForm').submit(function(ev) {
        if (data && data.status === 'success') {
          CEIS.sessionid = data.content.sessionid;
          CEIS.firstLogin = data.content.firstLogin;
-         Utils.storage.set('ceis', CEIS.sessionid)
+         Utils.storage.set('ceis', CEIS)
          if (CEIS.firstLogin) {
-           $('#toast-cnt').html('首次登陆或密码过期，请修改密码！')
-           $('#toast').modal('open')
+           Utils.UI.toast('首次登陆或密码过期，请修改密码！')
            Utils.forward('./modifypwd.html')
          }
          else {
-           $('#toast-cnt').html('登录成功！')
-           $('#toast').modal('open')
+           Utils.UI.toast('登录成功！')
            Utils.forward('./index.html')
          }
        }
        else {
          $password.val('')
-         $('#toast-cnt').html(data.msg)
-         $('#toast').modal('open')
+         Utils.UI.toast(data.msg)
          effectDone()
 
          if (data.content && data.content.shiroLoginFailure == 'org.apache.shiro.authc.AuthenticationException'){
@@ -107,10 +96,6 @@ $('#loginForm').submit(function(ev) {
        effectDone()
      })
 
-    // setTimeout(function() {
-    //   $.AMUI.progress.done()
-    //   document.location.href = 'index.html'
-    // }, 1500)
   }
 
 })

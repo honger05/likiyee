@@ -17,6 +17,8 @@ var CONTEXT_URL = 'ceis/a/'
 
 var Utils = {
 
+  RSAUtils: require('./rsautils'),
+
   URL: {
     VALIDATA_IMG: 'ceis/servlet/validateCodeServlet',
     LOGIN: CONTEXT_URL + 'login',
@@ -24,6 +26,21 @@ var Utils = {
     LIST_MENU: CONTEXT_URL + 'sys/user/listMenus.do',
     RSA_KEY: CONTEXT_URL + 'getrsakey.do',
     MODIFYPWD: CONTEXT_URL + 'sys/user/modifyPwd.do'
+  },
+
+  UI: {
+    toastinit: function() {
+      $('#toast').on('opened.modal.amui', function() {
+        setTimeout(function() {
+          $(this).modal('close')
+        }.bind(this), 800)
+      })
+    },
+
+    toast: function(msg) {
+      $('#toast-cnt').html(msg)
+      $('#toast').modal('open')
+    }
   },
 
   forward: function(url) {
