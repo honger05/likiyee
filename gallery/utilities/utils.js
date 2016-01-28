@@ -37,10 +37,11 @@ var Utils = {
     Pull: require('./pull'),
 
     toastinit: function() {
+      $('body').append(Handlebars.compile('{{>toast}}')())
       $('#toast').on('opened.modal.amui', function() {
         setTimeout(function() {
           $(this).modal('close')
-        }.bind(this), 800)
+        }.bind(this), 1000)
       })
     },
 
@@ -90,5 +91,33 @@ var Utils = {
   }
 
 }
+
+Utils.UI.toastinit()
+
+$( document ).ajaxError(function(event, jqxhr, settings, thrownError) {
+  Utils.UI.toast('服务器异常，请稍后...')
+  console.error([event, jqxhr, settings, thrownError])
+})
+
+$( document ).ajaxComplete(function( event, xhr, settings ) {
+  // settings.url,
+  var res_data = JSON.parse(xhr.responseText)
+  console.log(res_data)
+
+  switch (res_data.status) {
+    case 'unlogin':
+      Utils.forward('./login.html')
+      break;
+    case 'warning':
+      Utils.UI.toast(res_data.msg)
+      break;
+    case 'error':
+      Utils.UI.toast(res_data.msg)
+      break;
+    default:
+      // no code
+  }
+
+})
 
 module.exports = Utils

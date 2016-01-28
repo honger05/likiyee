@@ -2,8 +2,6 @@
 var Utils = require('utils')
 require('../../common/common.scss')
 
-Utils.UI.toastinit()
-
 $('#modify-form').on('submit', function(ev) {
   ev.preventDefault()
 

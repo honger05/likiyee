@@ -26,7 +26,7 @@ var route = [
 var devConfig = {
   entry: {
     devServer: 'webpack/hot/dev-server',
-    common: ['jquery', 'handlebars', 'amazeui']
+    common: ['jquery', 'handlebars', 'amazeui', 'underscore', 'utils']
   },
   output: {
     path: distPath,

@@ -1,4 +1,6 @@
+
 var Pull = function(element, options) {
+
   var $main = $('#wrapper')
   var $list = $main.find(options.list_id)
   var $pullDown = $main.find('#pull-down')

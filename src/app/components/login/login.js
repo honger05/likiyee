@@ -5,8 +5,6 @@ require('./login.scss')
 
 var CEIS = {}
 
-Utils.UI.toastinit()
-
 $.post(Utils.URL.RSA_KEY)
  .done(function(data) {
   if (data && data.content) {

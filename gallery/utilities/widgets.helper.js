@@ -72,6 +72,8 @@ hbs.registerPartial('titlebar', "{{#this}}\n<div data-am-widget=\"titlebar\" cla
 
 hbs.registerPartial('wechatpay', "{{#this}}\n  <div data-am-widget=\"wechatpay\" class=\"am-wechatpay{{#if theme}} am-wechatpay-{{theme}}{{else}} am-wechatpay-default{{/if}}{{#if widgetId}} {{widgetId}}{{/if}}{{#if className}} {{className}}{{/if}}\"{{#if id}} id=\"{{id}}\"{{/if}} data-wechat-pay=\"{ {{#each content.order}} {{@key}}: '{{this}}',{{/each}} }\">\n      <button type=\"button\" class=\"am-btn am-btn-primary am-btn-block am-wechatpay-btn\">\n        {{#if content.title}}\n          {{content.title}}\n        {{else}}\n          微信支付\n        {{/if}}\n      </button>\n  </div>\n{{/this}}\n");
 
+hbs.registerPartial('toast', ' <div class="am-modal am-modal-no-btn" tabindex="-1" id="toast"><div class="am-modal-dialog"><div class="am-modal-bd" id="toast-cnt"></div></div></div>')
+
 };
 
 registerAMUIPartials(Handlebars);
