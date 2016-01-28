@@ -19,10 +19,10 @@ var Utils = {
 
   URL: {
     VALIDATA_IMG: 'ceis/servlet/validateCodeServlet',
-    LOGINOUT: CONTEXT_URL + 'logout',
+    LOGIN: CONTEXT_URL + 'login',
+    LOGOUT: CONTEXT_URL + 'logout',
     LIST_MENU: CONTEXT_URL + 'sys/user/listMenus.do',
     RSA_KEY: CONTEXT_URL + 'getrsakey.do',
-    LOGIN: CONTEXT_URL + 'login',
     MODIFYPWD: CONTEXT_URL + 'sys/user/modifyPwd.do'
   },
 

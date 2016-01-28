@@ -12,7 +12,7 @@ var config = {
     src: path.resolve(__dirname, "src/www"),
     app: path.resolve(__dirname, "src/app"),
     dist: path.resolve(__dirname, "dist"),
-    pub: path.resolve(__dirname, "pub")
+    gallery: path.resolve(__dirname, "gallery")
   },
   defaultPath: "http://www.yy.com/",
   cdn: "http://www.yy.com"
@@ -35,9 +35,9 @@ var proConfig = {
   resolve: {
     extensions: ["", ".js", ".jsx", ".es6", "css", "scss", "png", "jpg", "jpeg"],
     alias: {
-      'jquery': path.join(config.path.src, '/assets/jquery'),
-      'handlebars': path.join(config.path.src, '/assets/handlebars'),
-      'utils': path.join(config.path.src, '/utilities/utils')
+      'jquery': path.join(config.path.gallery, '/lib/jquery'),
+      'handlebars': path.join(config.path.gallery, '/lib/handlebars'),
+      'utils': path.join(config.path.gallery, '/utilities/utils')
     }
   },
   devtool: 'source-map',
@@ -56,7 +56,7 @@ var proConfig = {
       Handlebars: "handlebars"
     }),
 
-    new ExtractTextPlugin('[name].css'),
+    new ExtractTextPlugin('styles/[name].css'),
 
     new webpack.NoErrorsPlugin(),
 
@@ -93,20 +93,16 @@ var proConfig = {
         loader: "url-loader?limit=1000&name=img/[name]-[hash:10].[ext]",
         include: path.resolve(config.path.src)
       },
-      // {
-      //   test: /\.html$/,
-      //   loader: 'html'
-      // },
       {
         test: /\.hbs$/,
         loader: 'handlebars-loader'
       },
       {
-        test: path.join(config.path.src, '/assets/handlebars'),
+        test: path.join(config.path.gallery, '/lib/handlebars'),
         loader: 'expose?Handlebars'
       },
       {
-        test: path.join(config.path.src, '/assets/jquery'),
+        test: path.join(config.path.gallery, '/lib/jquery'),
         loader: 'expose?jQuery'
       },
       {

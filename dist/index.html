@@ -1,13 +1,15 @@
 
 <!doctype html>
 <html class="no-js">
-<head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content=""><meta name=keywords content=""><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>核心展业系统</title><meta name=renderer content=webkit><meta http-equiv=Cache-Control content="no-siteapp"><meta name=mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content="Amaze UI"><meta name=msapplication-TileColor content=#0e90d2>
+<head>
+  <meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content=""><meta name=keywords content=""><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>核心展业系统</title><meta name=renderer content=webkit><meta http-equiv=Cache-Control content="no-siteapp"><meta name=mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content="Amaze UI"><meta name=msapplication-TileColor content=#0e90d2><link rel=stylesheet href="styles/common.css">
+</head>
 <body>
-  <link rel="stylesheet" href="common.css">
+
   <header class="am-header am-header-default">
     <h1 class="am-header-title">核心展业系统</h1>
     <div class="am-header-nav am-header-right">
-      <a href="login.html"><i class="am-icon-sign-out"></i></a>
+      <a href="javascript:void(0)" id="logout"><i class="am-icon-sign-out"></i></a>
     </div>
   </header>
 
@@ -15,25 +17,7 @@
     <div class="am-g">
       <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
         <br>
-        <ul class="am-list am-list-border">
-          <li class="am-animation-slide-bottom">
-            <a href="withheld.html">
-              <i class="am-icon-credit-card-alt am-icon-fw"></i> 预扣款
-              <i class="am-icon-angle-right am-fr"></i>
-            </a>
-          </li>
-          <li class="am-animation-slide-bottom am-animation-delay-1">
-            <a href="withheld.html">
-              <i class="am-icon-calendar-minus-o am-icon-fw"></i> 逾期扣款
-              <i class="am-icon-angle-right am-fr"></i>
-            </a>
-          </li>
-          <li class="am-animation-slide-bottom am-animation-delay-2">
-            <a href="survey.html">
-              <i class="am-icon-cloud-upload am-icon-fw"></i> 上传现场调查报告
-              <i class="am-icon-angle-right am-fr"></i>
-            </a>
-          </li>
+        <ul class="am-list am-list-border" id="menu-list">
           <li class="am-animation-slide-bottom am-animation-delay-2">
             <a href="modifypwd.html">
               <i class="am-icon-edit am-icon-fw"></i> 修改密码
@@ -45,6 +29,17 @@
     </div>
   </div>
 
+  <script type="text/x-handlebars-template" id="tmpl-item">
+    {{#each this}}
+    <li class="am-animation-slide-bottom">
+      <a href="{{href}}">
+        <i class="am-{{icon}} am-icon-fw"></i> {{name}}
+        <i class="am-icon-angle-right am-fr"></i>
+      </a>
+    </li>
+    {{/each}}
+  </script>
+
   <script src="scripts/common.js"></script>
-<script src="./scripts/index.bundle.js?0ed4a69117296bf674de"></script></body>
+<script src="./scripts/index.bundle.js?5139730aa03bfd127bd5"></script></body>
 </html>

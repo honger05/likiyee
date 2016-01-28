@@ -1,9 +1,11 @@
 
 <!doctype html>
 <html class="no-js">
-<head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content=""><meta name=keywords content=""><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>核心展业系统</title><meta name=renderer content=webkit><meta http-equiv=Cache-Control content="no-siteapp"><meta name=mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content="Amaze UI"><meta name=msapplication-TileColor content=#0e90d2>
+<head>
+  <meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content=""><meta name=keywords content=""><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>核心展业系统</title><meta name=renderer content=webkit><meta http-equiv=Cache-Control content="no-siteapp"><meta name=mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content="Amaze UI"><meta name=msapplication-TileColor content=#0e90d2><link rel=stylesheet href="styles/common.css">
+</head>
 <body>
-  <link rel="stylesheet" href="common.css">
+
   <header class="am-header am-header-default">
     <div class="am-header-nav am-header-left">
       <a href="index.html"><i class="am-icon-chevron-left"></i></a>
@@ -16,20 +18,20 @@
     <div class="am-g">
       <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
         <br>
-        <form class="am-form">
+        <form class="am-form" id="modify-form">
           <div class="am-form-group am-form-icon">
             <i class="am-icon-user-secret"></i>
-            <input type="text" class="am-form-field" placeholder="原始密码">
+            <input type="text" class="am-form-field" name="oldPassword" placeholder="原始密码">
           </div>
 
           <div class="am-form-group am-form-icon">
             <i class="am-icon-eye"></i>
-            <input type="password" class="am-form-field" placeholder="新密码">
+            <input type="password" class="am-form-field" name="newPassword" placeholder="新密码">
           </div>
 
           <div class="am-form-group am-form-icon">
             <i class="am-icon-eye"></i>
-            <input type="password" class="am-form-field" placeholder="确认新密码">
+            <input type="password" class="am-form-field" id="cfrPassword" placeholder="确认新密码">
           </div>
           <br>
           <div class="am-cf">
@@ -40,6 +42,12 @@
     </div>
   </div>
 
+  <div class="am-modal am-modal-no-btn" tabindex="-1" id="toast">
+    <div class="am-modal-dialog">
+      <div class="am-modal-bd" id="toast-cnt"></div>
+    </div>
+  </div>
+
   <script src="scripts/common.js"></script>
-<script src="./scripts/modifypwd.bundle.js?0ed4a69117296bf674de"></script></body>
+<script src="./scripts/modifypwd.bundle.js?5139730aa03bfd127bd5"></script></body>
 </html>
