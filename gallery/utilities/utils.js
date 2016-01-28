@@ -25,7 +25,11 @@ var Utils = {
     LOGOUT: CONTEXT_URL + 'logout',
     LIST_MENU: CONTEXT_URL + 'sys/user/listMenus.do',
     RSA_KEY: CONTEXT_URL + 'getrsakey.do',
-    MODIFYPWD: CONTEXT_URL + 'sys/user/modifyPwd.do'
+    MODIFYPWD: CONTEXT_URL + 'sys/user/modifyPwd.do',
+
+    REPAY_LIST: CONTEXT_URL + 'repay/list.do',
+    REPAY_DETAIL: CONTEXT_URL + 'repay/detail.do',
+    REPAY_DEBIT: CONTEXT_URL + 'repay/debit.do'
   },
 
   UI: {
@@ -41,6 +45,16 @@ var Utils = {
       $('#toast-cnt').html(msg)
       $('#toast').modal('open')
     }
+  },
+
+  getQueryString: function(name) {
+    var val = ''
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+    var r = window.location.search.substr(1).match(reg)
+    if (r !== null) {
+      val = unescape(r[2])
+    }
+    return val
   },
 
   forward: function(url) {
