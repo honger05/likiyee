@@ -72,11 +72,11 @@ $('#loginForm').submit(function(ev) {
          Utils.storage.set(Utils.storage.CEIS_SESSION, CEIS)
          if (CEIS.firstLogin) {
            Utils.UI.toast('首次登陆或密码过期，请修改密码！')
-           Utils.forward('./modifypwd.html')
+           Utils.replace('./modifypwd.html')
          }
          else {
            Utils.UI.toast('登录成功！')
-           Utils.forward('./index.html')
+           Utils.replace('./index.html')
          }
        }
        else {

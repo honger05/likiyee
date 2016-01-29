@@ -1,17 +1,8 @@
 require('amazeui/less/amazeui.less')
 
-require('./ajax.handle.js')
-require('./widgets.helper.js')
-
-var progress = $.AMUI.progress
-
-$(window).load(function() {
-  progress.done(true)
-})
-
-$(document).ready(function() {
-  progress.set(0.4)
-})
+require('./error.report')
+require('./ajax.handle')
+require('./widgets.helper')
 
 var CONTEXT_URL = 'ceis/a/'
 var TIMING = 1000
@@ -19,6 +10,8 @@ var TIMING = 1000
 var Utils = {
 
   RSAUtils: require('./rsautils'),
+
+  REG: require('./regexp.helper'),
 
   URL: {
     VALIDATA_IMG: 'ceis/servlet/validateCodeServlet',
@@ -36,6 +29,16 @@ var Utils = {
   UI: {
 
     Pull: require('./pull'),
+
+    effectBody: function() {
+      $(window).load(function() {
+        $.AMUI.progress.done(true)
+      })
+
+      $(document).ready(function() {
+        $.AMUI.progress.set(0.4)
+      })
+    },
 
     toastinit: function() {
       $('body').append(Handlebars.compile('{{>toast}}')())
@@ -74,8 +77,12 @@ var Utils = {
     return val
   },
 
-  forward: function(url) {
+  replace: function(url) {
     window.location.replace(url)
+  },
+
+  forward: function(url) {
+    window.location.assign(url)
   },
 
   storage: {
@@ -111,7 +118,7 @@ var Utils = {
 Utils.UI.toastinit()
 
 $( document ).ajaxError(function(event, jqxhr, settings, thrownError) {
-  Utils.UI.toast('服务器异常，请稍后...')
+  Utils.UI.toast('服务器异常，请重试...')
   console.error([event, jqxhr, settings, thrownError])
 })
 

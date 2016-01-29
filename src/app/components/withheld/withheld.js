@@ -22,16 +22,6 @@ var repay_list = []
 
 requestRepayList()
 
-function effectStart() {
-  $('#smtBtn').button('loading')
-  $.AMUI.progress.inc(0.5)
-}
-
-function effectDone() {
-  $('#smtBtn').button('reset')
-  $.AMUI.progress.done()
-}
-
 $('#searchForm').submit(function(ev) {
   ev.preventDefault()
   var $certId = $('#certId'),
@@ -54,11 +44,10 @@ function pagenation(start, count) {
 }
 
 function requestRepayList(params) {
-  effectStart()
+  $('#smtBtn').button('loading')
   params = _.extend({}, params, {
     repayType: repayType
   })
-  console.log(params);
   $.post(Utils.URL.REPAY_LIST, params)
     .done(function(data) {
       if (data.status === 'success') {
@@ -67,7 +56,7 @@ function requestRepayList(params) {
       }
     })
     .always(function() {
-      effectDone()
+      $('#smtBtn').button('reset')
     })
 }
 
@@ -82,9 +71,10 @@ var pull = new Utils.UI.Pull(null, {
 $('#repay-list').on('click', 'li', function() {
   var objectno = $(this).find('[data-objectno]').data('objectno')
   if (objectno) {
-    utils.storage.set(Utils.storage.PAY_SESSTION, {
+    Utils.storage.set(Utils.storage.PAY_SESSION, {
       objectNo: objectno,
       repayType: repayType
     })
+    Utils.forward('./dowithheld.html')
   }
 })
