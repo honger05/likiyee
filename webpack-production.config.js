@@ -40,7 +40,7 @@ var proConfig = {
       'utils': path.join(config.path.gallery, '/utilities/utils')
     }
   },
-  devtool: 'source-map',
+  // devtool: 'source-map',
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: "common",

@@ -14,6 +14,7 @@ $(document).ready(function() {
 })
 
 var CONTEXT_URL = 'ceis/a/'
+var TIMING = 1000
 
 var Utils = {
 
@@ -41,14 +42,26 @@ var Utils = {
       $('#toast').on('opened.modal.amui', function() {
         setTimeout(function() {
           $(this).modal('close')
-        }.bind(this), 1000)
+        }.bind(this), TIMING)
       })
     },
 
     toast: function(msg) {
       $('#toast-cnt').html(msg)
       $('#toast').modal('open')
+    },
+
+    alert: function(msg) {
+      $('.am-main').prepend(Handlebars.compile('{{>alert}}')({
+        msg: msg,
+        status: 'warning'
+      }))
+      $('#alert').alert()
+      setTimeout(function() {
+        $('#alert-close').click()
+      }, 3 * TIMING)
     }
+
   },
 
   getQueryString: function(name) {
@@ -66,6 +79,9 @@ var Utils = {
   },
 
   storage: {
+    PAY_SESSION: 'sfsfjwekjfkwnvdksn',
+    CEIS_SESSION: 'erotijbfkdjgdkfjgip',
+
     set: function(key, val) {
       try {
         var val_str = JSON.stringify(val || {})

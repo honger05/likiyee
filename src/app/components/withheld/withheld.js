@@ -40,8 +40,7 @@ $('#searchForm').submit(function(ev) {
       certId_val = $.trim($certId.val())
 
   if (certId_val !== '' && userName_val === '') {
-    Utils.UI.toast('必须输入姓名才能查询')
-    console.log('必须输入姓名才能查询');
+    Utils.UI.alert('必须输入姓名才能查询')
   } else {
     requestRepayList({
       certId: certId_val,
@@ -78,4 +77,14 @@ var pull = new Utils.UI.Pull(null, {
   item_id: '#repay-item',
   list_id: '#repay-list',
   pagenation: pagenation
+})
+
+$('#repay-list').on('click', 'li', function() {
+  var objectno = $(this).find('[data-objectno]').data('objectno')
+  if (objectno) {
+    utils.storage.set(Utils.storage.PAY_SESSTION, {
+      objectNo: objectno,
+      repayType: repayType
+    })
+  }
 })

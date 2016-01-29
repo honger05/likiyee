@@ -55,10 +55,10 @@
   <script type="text/x-handlebars-template" id="repay-item">
     {{#each this}}
     <li>
-      <a href="dowithheld.html">
+      <a href="javascript:void(0)">
         <div class="item-main">
           <div class="item-title-row">
-            <h3 class="item-title">{{loanApplySerialNo}}</h3>
+            <h3 class="item-title" data-objectno={{loanApplySerialNo}}>{{loanApplySerialNo}}</h3>
             <div class="item-subtitle-l am-fr">身份证后四位：<span class="am-cid">{{certId}}</span></div>
             <div class="item-after">{{customerName}}</div>
             <i class="icon am-icon-angle-right am-fr"></i>

@@ -69,7 +69,7 @@ $('#loginForm').submit(function(ev) {
        if (data && data.status === 'success') {
          CEIS.sessionid = data.content.sessionid;
          CEIS.firstLogin = data.content.firstLogin;
-         Utils.storage.set('ceis', CEIS)
+         Utils.storage.set(Utils.storage.CEIS_SESSION, CEIS)
          if (CEIS.firstLogin) {
            Utils.UI.toast('首次登陆或密码过期，请修改密码！')
            Utils.forward('./modifypwd.html')

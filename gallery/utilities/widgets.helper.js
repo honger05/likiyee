@@ -74,6 +74,8 @@ hbs.registerPartial('wechatpay', "{{#this}}\n  <div data-am-widget=\"wechatpay\"
 
 hbs.registerPartial('toast', ' <div class="am-modal am-modal-no-btn" tabindex="-1" id="toast"><div class="am-modal-dialog"><div class="am-modal-bd" id="toast-cnt"></div></div></div>')
 
+hbs.registerPartial('alert', '<div class="am-alert am-alert-{{status}}" id="alert"><button type="button" class="am-close" id="alert-close">&times;</button><p id="alert-cnt">{{msg}}</p></div>')
+
 };
 
 registerAMUIPartials(Handlebars);

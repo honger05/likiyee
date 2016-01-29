@@ -20,7 +20,7 @@ $('#modify-form').on('submit', function(ev) {
     $cfrPassword.val('')
     Utils.UI.toast('前后输入不一致')
   } else {
-    var CEIS = Utils.storage.get('ceis')
+    var CEIS = Utils.storage.get(Utils.storage.CEIS_SESSION)
     if (CEIS.exponent && CEIS.modulus) {
       var key = Utils.RSAUtils.getKeyPair(CEIS.exponent, '', CEIS.modulus)
       old_val = Utils.RSAUtils.encryptedString(key, old_val)
