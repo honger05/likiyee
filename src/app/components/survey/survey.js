@@ -1,3 +1,35 @@
 
 var Utils = require('utils')
 require('../../common/common.scss')
+
+var _list = []
+
+$.post(Utils.URL.SURVEY_LIST)
+  .done(function(data) {
+    if (data.status === 'success') {
+      _list = data.content || []
+      pull.init()
+    }
+  })
+
+function pagenation(start, count) {
+  return [ _list.slice(start - 1, count +　start - 1), _list.length ]
+}
+
+var pull = new Utils.UI.Pull(null, {
+  start: 1,
+  count: 10,
+  item_id: '#item-tmpl',
+  list_id: '#list-tmpl',
+  pagenation: pagenation
+})
+
+$('#list-tmpl').on('click', 'li', function() {
+  var applyno = $(this).find('[data-applyno]').data('applyno')
+  if (applyno) {
+    Utils.storage.set(Utils.storage.SURVEY_SESSION, {
+      applySerialNo: applyno
+    })
+    Utils.forward('./dosurvey.html')
+  }
+})

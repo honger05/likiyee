@@ -21,6 +21,10 @@ switch (pay_session.repayType) {
     Utils.replace('./index.html')
 }
 
+Utils.unload(function() {
+  Utils.storage.set(Utils.storage.PAY_SESSION)
+})
+
 $.post(Utils.URL.REPAY_DETAIL, pay_session)
   .done(function(data) {
     if (data.status === 'success') {

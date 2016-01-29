@@ -16,13 +16,13 @@
     <div class="am-main" id="wrapper" data-am-widget="list_news">
 
       <div class="am-list-news-bd">
-        <div class="pull-action loading" id="pull-down">
+        <!-- <div class="pull-action loading" id="pull-down">
           <span class="am-icon-arrow-down pull-label" id="pull-down-label">
             下拉刷新
           </span>
           <span class="am-icon-spinner am-icon-spin"></span>
-        </div>
-        <ul id="events-list" class="am-list item-content am-padding-xs am-animation-slide-bottom">
+        </div> -->
+        <ul id="list-tmpl" class="am-list item-content am-padding-xs am-animation-slide-bottom">
           <li class="am-list-item-desced">
             <div class="am-list-item-text">
               正在加载内容...
@@ -38,18 +38,18 @@
     </div>
   </div>
 
-  <script type="text/x-handlebars-template" id="tpi-list-item">
+  <script type="text/x-handlebars-template" id="item-tmpl">
     {{#each this}}
     <li>
-      <a href="dosurvey.html">
+      <a href="javascript:void(0)">
         <div class="item-main">
           <div class="item-title-row am-cf">
-            <h3 class="item-title am-fl">YJS20150529000050</h3>
-            <div class="item-after am-fr">2015/1/1</div>
+            <h3 class="item-title am-fl" data-applyno={{applySerialNo}}>{{applySerialNo}}</h3>
+            <div class="item-after am-fr">{{beginDate}}</div>
           </div>
           <div class="item-subtitle">
             <i class="icon am-icon-angle-right am-fr"></i>
-            <div class="item-subtitle-r">核定可贷金额：<span class="am-rmb">10742.58</span> 元</div>
+            <div class="item-subtitle-r">核定可贷金额：<span class="am-rmb">{{planBusinessSum}}</span> 元</div>
           </div>
         </div>
       </a>

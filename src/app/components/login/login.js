@@ -59,8 +59,8 @@ $('#loginForm').submit(function(ev) {
 
     var $loginForm = $(this)
     if (CEIS.exponent && CEIS.modulus) {
-      var key = Utils.RSAUtils.getKeyPair(CEIS.exponent, '', CEIS.modulus);
-      var encryptedPwd = Utils.RSAUtils.encryptedString(key, pwd_str);
+      var key = Utils.RSA.getKeyPair(CEIS.exponent, '', CEIS.modulus);
+      var encryptedPwd = Utils.RSA.encryptedString(key, pwd_str);
       $password.val(encryptedPwd);
     }
 

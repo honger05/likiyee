@@ -22,9 +22,9 @@ $('#modify-form').on('submit', function(ev) {
   } else {
     var CEIS = Utils.storage.get(Utils.storage.CEIS_SESSION)
     if (CEIS.exponent && CEIS.modulus) {
-      var key = Utils.RSAUtils.getKeyPair(CEIS.exponent, '', CEIS.modulus)
-      old_val = Utils.RSAUtils.encryptedString(key, old_val)
-      new_val = Utils.RSAUtils.encryptedString(key, new_val)
+      var key = Utils.RSA.getKeyPair(CEIS.exponent, '', CEIS.modulus)
+      old_val = Utils.RSA.encryptedString(key, old_val)
+      new_val = Utils.RSA.encryptedString(key, new_val)
     }
     var req_data = {
       oldPassword: old_val,

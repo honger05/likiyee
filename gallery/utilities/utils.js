@@ -9,9 +9,11 @@ var TIMING = 1000
 
 var Utils = {
 
-  RSAUtils: require('./rsautils'),
+  RSA: require('./rsa.helper'),
 
   REG: require('./regexp.helper'),
+
+  IMAGE: require('./image.helper'),
 
   URL: {
     VALIDATA_IMG: 'ceis/servlet/validateCodeServlet',
@@ -23,7 +25,11 @@ var Utils = {
 
     REPAY_LIST: CONTEXT_URL + 'repay/list.yy',
     REPAY_DETAIL: CONTEXT_URL + 'repay/detail.yy',
-    REPAY_DEBIT: CONTEXT_URL + 'repay/debit.yy'
+    REPAY_DEBIT: CONTEXT_URL + 'repay/debit.yy',
+
+    SURVEY_LIST: CONTEXT_URL + 'apy/survey/list.yy',
+    SURVEY_DETAIL: CONTEXT_URL + 'apy/survey/detail.yy',
+    SURVEY_SAVE: CONTEXT_URL + 'apy/survey/save.yy'
   },
 
   UI: {
@@ -85,9 +91,14 @@ var Utils = {
     window.location.assign(url)
   },
 
+  unload: function(cb) {
+    window.onunload = cb
+  },
+
   storage: {
     PAY_SESSION: 'sfsfjwekjfkwnvdksn',
     CEIS_SESSION: 'erotijbfkdjgdkfjgip',
+    SURVEY_SESSION: 'rtoypmlmbcjfgkdjor',
 
     set: function(key, val) {
       try {
@@ -129,7 +140,8 @@ $( document ).ajaxComplete(function( event, xhr, settings ) {
 
   switch (res_data.status) {
     case 'unlogin':
-      Utils.forward('./login.html')
+      debugger;
+      Utils.replace('./login.html')
       break;
     case 'warning':
       Utils.UI.toast(res_data.msg)
