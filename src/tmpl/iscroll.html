@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <%= require('html!./header.html') %>
+  <%= require('html!./inc-meta.html') %>
 </head>
 <body>
 <div class="page">
@@ -44,7 +44,7 @@
   {{/each}}
 </script>
 
-<script src="scripts/common.js"></script>
+<%= require('html!./inc-footer.html') %>
 </body>
 </html>
 <!--http://pnc.co.il/dev/iscroll-5-pull-to-refresh-and-infinite-demo.html-->

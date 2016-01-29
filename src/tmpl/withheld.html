@@ -2,7 +2,7 @@
 <!doctype html>
 <html class="no-js">
 <head>
-  <%= require('html!./header.html') %>
+  <%= require('html!./inc-meta.html') %>
 </head>
 <body>
 
@@ -72,6 +72,6 @@
     {{/each}}
   </script>
 
-  <script src="scripts/common.js"></script>
+  <%= require('html!./inc-footer.html') %>
 </body>
 </html>
