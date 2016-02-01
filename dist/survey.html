@@ -1,0 +1,93 @@
+
+<!doctype html>
+<html class="no-js">
+<head>
+  
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>核心展业系统</title>
+
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+
+<!-- No Baidu Siteapp-->
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+<!-- <link rel="icon" type="image/png" href="assets/i/favicon.png"> -->
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<!-- <link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png"> -->
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+<!-- <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png"> -->
+
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<!-- <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png"> -->
+<meta name="msapplication-TileColor" content="#0e90d2">
+<link rel="stylesheet" href="styles/common.css?sdjfowerwmerftor" />
+
+<link href="styles/survey.css?afdbebd80bdf571b85bb" rel="stylesheet"></head>
+<body>
+  <div class="yj-page">
+    <header class="am-header am-header-default" data-am-widget="header">
+      <div class="am-header-nav am-header-left">
+        <a href="index.html"><i class="am-icon-chevron-left"></i></a>
+      </div>
+      <h1 class="am-header-title">现场调查报告</h1>
+    </header>
+
+    <div class="am-main" id="wrapper" data-am-widget="list_news">
+
+      <div class="am-list-news-bd">
+        <!-- <div class="pull-action loading" id="pull-down">
+          <span class="am-icon-arrow-down pull-label" id="pull-down-label">
+            下拉刷新
+          </span>
+          <span class="am-icon-spinner am-icon-spin"></span>
+        </div> -->
+        <ul id="list-tmpl" class="am-list item-content am-padding-xs am-animation-slide-bottom">
+          <li class="am-list-item-desced">
+            <div class="am-list-item-text">
+              正在加载内容...
+            </div>
+          </li>
+        </ul>
+        <div class="pull-action" id="pull-up">
+          <span class="am-icon-arrow-down pull-label"
+                id="pull-up-label"> 上拉加载更多</span>
+          <span class="am-icon-spinner am-icon-spin"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/x-handlebars-template" id="item-tmpl">
+    {{#each this}}
+    <li>
+      <a href="javascript:void(0)">
+        <div class="item-main">
+          <div class="item-title-row am-cf">
+            <h3 class="item-title am-fl" data-applyno={{applySerialNo}}>{{applySerialNo}}</h3>
+            <div class="item-after am-fr">{{beginDate}}</div>
+          </div>
+          <div class="item-subtitle">
+            <i class="icon am-icon-angle-right am-fr"></i>
+            <div class="item-subtitle-r">核定可贷金额：<span class="am-rmb">{{planBusinessSum}}</span> 元</div>
+          </div>
+        </div>
+      </a>
+    </li>
+    {{/each}}
+  </script>
+  
+<script src="scripts/common.js?aeturihgfnknvdfjg"></script>
+
+<script src="./scripts/survey.bundle.js?afdbebd80bdf571b85bb"></script></body>
+</html>

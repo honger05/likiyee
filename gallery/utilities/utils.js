@@ -131,7 +131,7 @@ Utils.UI.toastinit()
 
 $( document ).ajaxError(function(event, jqxhr, settings, thrownError) {
   console.error([event, jqxhr, settings, thrownError])
-  Utils.UI.toast('系统正在维护...')
+  Utils.UI.toast('系统异常，请稍后重试...')
   // Utils.forward('./unicorn.html')
 })
 

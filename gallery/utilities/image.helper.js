@@ -40,17 +40,13 @@ module.exports = {
   	}
   },
 
-  checkExtention: function(files) {
-     files instanceof Array ? files : (files = [ files ])
-     var flag = true, exts = ['jpg', 'gif', 'png', 'jpeg']
-     files.forEach(function(file) {
-       var file_chunk = file.split('.')
-       var file_ext = file_chunk[file_chunk.length - 1].toLowerCase()
-       flag = exts.some(function(ext) {
-         return file_ext === ext
-       })
+  checkExtention: function(filename) {
+     var exts = ['jpg', 'gif', 'png', 'jpeg']
+     var file_chunk = filename.split('.')
+     var file_ext = file_chunk[file_chunk.length - 1].toLowerCase()
+     return exts.some(function(ext) {
+       return file_ext === ext
      })
-     return flag
   }
 
 }

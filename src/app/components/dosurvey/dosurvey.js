@@ -2,6 +2,7 @@
 var Utils = require('utils')
 require('../../common/common.scss')
 require('./dosurvey.scss')
+var _ = require('underscore')
 
 var survey_session = Utils.storage.get(Utils.storage.SURVEY_SESSION)
 
@@ -48,10 +49,16 @@ function requestSurveyDetail() {
 }
 
 function displayImages(files, zoom, upBtn, name) {
-  if (!Utils.IMAGE.checkExtention(files)) {
+
+  var isAllImg = _(files).every(function(file) {
+    return Utils.IMAGE.checkExtention(file.name)
+  })
+
+  if (!isAllImg) {
     Utils.UI.toast('只能选择图片')
-    return null;
+    return;
   }
+
   upBtn.button('loading')
   var filePromises = Array.prototype.map.call(files, function(file) {
     return new Promise(function(resolve, reject) {
@@ -75,15 +82,17 @@ function displayImages(files, zoom, upBtn, name) {
 
 function submitSurvey() {
   var req_data = {
-    homefiles: galleryData.house.content,
-    companyfiles: galleryData.company.content,
+    homefiles: ['sdsdsdsd'].concat(_.pluck(galleryData.house.content, 'img')),
+    companyfiles: ['sdsdsdsd'].concat(_.pluck(galleryData.company.content, 'img')),
     applySerialNo: survey_session.applySerialNo,
     remarks: $('#remark-txa').val()
   }
   $.post(Utils.URL.SURVEY_SAVE, req_data)
     .done(function(data) {
       if (data.status === 'success') {
-        Utils.UI.toast(data.msg)
+        Utils.UI.toast(data.msg, function() {
+          Utils.forward('./survey.html')
+        })
       }
     })
 }
