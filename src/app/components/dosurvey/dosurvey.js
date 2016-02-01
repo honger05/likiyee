@@ -48,7 +48,7 @@ function requestSurveyDetail() {
 }
 
 function displayImages(files, zoom, upBtn, name) {
-  if (!Utils.IMAGE.checkExtention()) {
+  if (!Utils.IMAGE.checkExtention(files)) {
     Utils.UI.toast('只能选择图片')
     return null;
   }

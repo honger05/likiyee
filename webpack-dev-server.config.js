@@ -20,7 +20,8 @@ var config = {
 
 var route = [
   'index', 'login', 'withheld', 'dowithheld',
-  'survey', 'dosurvey', 'modifypwd', 'iscroll'
+  'survey', 'dosurvey', 'modifypwd', 'iscroll',
+  'unicorn'
 ]
 
 var devConfig = {

@@ -20,7 +20,7 @@ var config = {
 
 var route = [
   'index', 'login', 'withheld', 'dowithheld',
-  'survey', 'dosurvey', 'modifypwd'
+  'survey', 'dosurvey', 'modifypwd', 'unicorn'
 ]
 
 var proConfig = {

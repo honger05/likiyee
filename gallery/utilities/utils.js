@@ -4,7 +4,8 @@ require('./error.report')
 require('./ajax.handle')
 require('./widgets.helper')
 
-var CONTEXT_URL = 'ceis/a/'
+var HOST = ''//'http://172.30.2.105:8083/'
+var CONTEXT_URL = HOST + 'ceis/a/'
 var TIMING = 1000
 
 var Utils = {
@@ -16,7 +17,7 @@ var Utils = {
   IMAGE: require('./image.helper'),
 
   URL: {
-    VALIDATA_IMG: 'ceis/servlet/validateCodeServlet',
+    VALIDATA_IMG: HOST + 'ceis/servlet/validateCodeServlet',
     LOGIN: CONTEXT_URL + 'login',
     LOGOUT: CONTEXT_URL + 'logout',
     LIST_MENU: CONTEXT_URL + 'sys/user/listMenus.yy',
@@ -129,8 +130,9 @@ var Utils = {
 Utils.UI.toastinit()
 
 $( document ).ajaxError(function(event, jqxhr, settings, thrownError) {
-  Utils.UI.toast('服务器异常，请重试...')
   console.error([event, jqxhr, settings, thrownError])
+  Utils.UI.toast('系统正在维护...')
+  // Utils.forward('./unicorn.html')
 })
 
 $( document ).ajaxComplete(function( event, xhr, settings ) {
