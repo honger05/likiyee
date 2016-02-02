@@ -20,10 +20,7 @@ switch (params) {
 
 var repay_list = []
 
-requestRepayList()
-
-$('#searchForm').submit(function(ev) {
-  ev.preventDefault()
+$('#with-smtBtn').on('click', function(ev) {
   var $certId = $('#certId'),
       $userName = $('#userName'),
       userName_val = $.trim($userName.val()),
@@ -31,12 +28,14 @@ $('#searchForm').submit(function(ev) {
 
   if (certId_val !== '' && userName_val === '') {
     Utils.UI.alert('必须输入姓名才能查询')
-  } else {
+  }
+  else {
     requestRepayList({
       certId: certId_val,
       userName: userName_val
     })
   }
+
 })
 
 function pagenation(start, count) {
@@ -44,7 +43,7 @@ function pagenation(start, count) {
 }
 
 function requestRepayList(params) {
-  $('#smtBtn').button('loading')
+  $('#with-smtBtn').button('loading')
   params = _.extend({}, params, {
     repayType: repayType
   })
@@ -56,7 +55,7 @@ function requestRepayList(params) {
       }
     })
     .always(function() {
-      $('#smtBtn').button('reset')
+      $('#with-smtBtn').button('reset')
     })
 }
 
@@ -78,3 +77,5 @@ $('#repay-list').on('click', 'li', function() {
     Utils.forward('./dowithheld.html')
   }
 })
+
+requestRepayList()

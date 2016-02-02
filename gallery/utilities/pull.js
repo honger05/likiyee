@@ -109,4 +109,8 @@ var Pull = function(element, options) {
   }
 }
 
+document.addEventListener('touchmove', function(e) {
+  e.preventDefault();
+}, false);
+
 module.exports = Pull

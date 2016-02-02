@@ -56,9 +56,14 @@ var Utils = {
       })
     },
 
-    toast: function(msg) {
+    toast: function(msg, cb) {
       $('#toast-cnt').html(msg)
       $('#toast').modal('open')
+      if (cb) {
+        setTimeout(function() {
+          cb()
+        }, TIMING)
+      }
     },
 
     alert: function(msg) {
@@ -131,8 +136,8 @@ Utils.UI.toastinit()
 
 $( document ).ajaxError(function(event, jqxhr, settings, thrownError) {
   console.error([event, jqxhr, settings, thrownError])
-  Utils.UI.toast('系统异常，请稍后重试...')
-  // Utils.forward('./unicorn.html')
+  // Utils.UI.toast('系统异常，请稍后重试...')
+  Utils.forward('./unicorn.html')
 })
 
 $( document ).ajaxComplete(function( event, xhr, settings ) {
