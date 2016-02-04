@@ -6,14 +6,6 @@ var _ = require('underscore')
 
 var survey_session = Utils.storage.get(Utils.storage.SURVEY_SESSION)
 
-if (!survey_session.applySerialNo) {
-  Utils.replace('./index.html')
-}
-
-Utils.unload(function() {
-  Utils.storage.set(Utils.storage.SURVEY_SESSION)
-})
-
 var Promise = window.Promise || require('es6-promise').Promise
 
 var galleryTemplate = Handlebars.compile('{{>gallery}}')
@@ -48,7 +40,10 @@ function requestSurveyDetail() {
   })
 }
 
+var ind = 1;
+
 function displayImages(files, zoom, upBtn, name) {
+  upBtn.button('loading')
 
   var isAllImg = _(files).every(function(file) {
     return Utils.IMAGE.checkExtention(file.name)
@@ -56,10 +51,10 @@ function displayImages(files, zoom, upBtn, name) {
 
   if (!isAllImg) {
     Utils.UI.toast('只能选择图片')
+    upBtn.button('reset')
     return;
   }
 
-  upBtn.button('loading')
   var filePromises = Array.prototype.map.call(files, function(file) {
     return new Promise(function(resolve, reject) {
       Utils.IMAGE.resizeImageFile(file, 2280, 2280, function(dataURL) {
@@ -70,9 +65,21 @@ function displayImages(files, zoom, upBtn, name) {
 
   Promise.all(filePromises).then(function(dataURL) {
     galleryData[name].content = galleryData[name].content.concat(dataURL)
-    $(zoom).find('.am-gallery').remove()
-    $(zoom).append(galleryTemplate(galleryData[name]))
-    $(zoom).find('.am-gallery').pureview()
+    
+    if (ind == 1) {
+      ind += 1
+      $(zoom).append(galleryTemplate(dataURL))
+      $(zoom).find('.am-gallery').pureview()
+    } 
+    else {
+      var li_template = '{{#each this}}<li><a class="am-close am-close-alt am-icon-times am-img-close"></a><div class="am-gallery-item"><img src={{img}} data-am-pureviewed="1"></div></li>{{/each}}'
+      $(zoom).append(Handlebars.compile(li_template)(dataURL))
+    }
+    
+
+    // $(zoom).find('.am-gallery').remove()
+    // $(zoom).append(galleryTemplate(galleryData[name]))
+    // $(zoom).find('.am-gallery').pureview()
     setTimeout(function() {
       upBtn.button('reset')
     }, 400)
@@ -97,6 +104,16 @@ function submitSurvey() {
     })
 }
 
+function checkStatus() {
+  if (!survey_session.applySerialNo) {
+    Utils.replace('./index.html')
+  }
+
+  Utils.unload(function() {
+    Utils.storage.set(Utils.storage.SURVEY_SESSION)
+  })
+}
+
 $('#up-house').on('change', function() {
   displayImages(this.files, '#file-list-house', $(this).prev(), 'house')
 })
@@ -106,3 +123,9 @@ $('#up-company').on('change', function() {
 })
 
 $('#submitBtn').on('click', submitSurvey)
+
+$(document).on('click', '.am-img-close', function() {
+  var $li = $(this).parent()
+  var index = $li.parent().find('li').index($li)
+  $li.remove()
+})

@@ -16,7 +16,7 @@ function pagenation(start, count) {
   return [ _list.slice(start - 1, count +　start - 1), _list.length ]
 }
 
-var pull = new Utils.UI.Pull(null, {
+var pull = new Utils.Pull(null, {
   start: 1,
   count: 10,
   item_id: '#item-tmpl',
@@ -24,7 +24,7 @@ var pull = new Utils.UI.Pull(null, {
   pagenation: pagenation
 })
 
-$('#list-tmpl').on('click', 'li', function() {
+$('#list-tmpl').on('tap', 'li', function() {
   var applyno = $(this).find('[data-applyno]').data('applyno')
   if (applyno) {
     Utils.storage.set(Utils.storage.SURVEY_SESSION, {

@@ -59,7 +59,8 @@ var Pull = function(element, options) {
 
   this.init = function() {
     var myScroll = this.iScroll = new iScroll('#wrapper', {
-      click: true
+      // click: true
+      tap: true
     })
 
     var _this = this, pullFormTop = false, pullStart
@@ -107,10 +108,10 @@ var Pull = function(element, options) {
       }
     }
   }
-}
 
-document.addEventListener('touchmove', function(e) {
-  e.preventDefault();
-}, false);
+  document.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+  }, false);
+}
 
 module.exports = Pull

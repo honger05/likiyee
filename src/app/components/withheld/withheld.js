@@ -20,7 +20,7 @@ switch (params) {
 
 var repay_list = []
 
-$('#with-smtBtn').on('click', function(ev) {
+$('#with-smtBtn').on('tap', function(ev) {
   var $certId = $('#certId'),
       $userName = $('#userName'),
       userName_val = $.trim($userName.val()),
@@ -59,7 +59,7 @@ function requestRepayList(params) {
     })
 }
 
-var pull = new Utils.UI.Pull(null, {
+var pull = new Utils.Pull(null, {
   start: 1,
   count: 10,
   item_id: '#repay-item',
@@ -67,7 +67,7 @@ var pull = new Utils.UI.Pull(null, {
   pagenation: pagenation
 })
 
-$('#repay-list').on('click', 'li', function() {
+$('#repay-list').on('tap', 'li', function() {
   var objectno = $(this).find('[data-objectno]').data('objectno')
   if (objectno) {
     Utils.storage.set(Utils.storage.PAY_SESSION, {

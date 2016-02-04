@@ -6,7 +6,6 @@ require('./widgets.helper')
 
 var HOST = ''//'http://172.30.2.105:8083/'
 var CONTEXT_URL = HOST + 'ceis/a/'
-var TIMING = 1000
 
 var Utils = {
 
@@ -15,6 +14,10 @@ var Utils = {
   REG: require('./regexp.helper'),
 
   IMAGE: require('./image.helper'),
+
+  Pull: require('./pull'),
+
+  UI: require('./ui.helper'),
 
   URL: {
     VALIDATA_IMG: HOST + 'ceis/servlet/validateCodeServlet',
@@ -31,52 +34,6 @@ var Utils = {
     SURVEY_LIST: CONTEXT_URL + 'apy/survey/list.yy',
     SURVEY_DETAIL: CONTEXT_URL + 'apy/survey/detail.yy',
     SURVEY_SAVE: CONTEXT_URL + 'apy/survey/save.yy'
-  },
-
-  UI: {
-
-    Pull: require('./pull'),
-
-    effectBody: function() {
-      $(window).load(function() {
-        $.AMUI.progress.done(true)
-      })
-
-      $(document).ready(function() {
-        $.AMUI.progress.set(0.4)
-      })
-    },
-
-    toastinit: function() {
-      $('body').append(Handlebars.compile('{{>toast}}')())
-      $('#toast').on('opened.modal.amui', function() {
-        setTimeout(function() {
-          $(this).modal('close')
-        }.bind(this), TIMING)
-      })
-    },
-
-    toast: function(msg, cb) {
-      $('#toast-cnt').html(msg)
-      $('#toast').modal('open')
-      if (cb) {
-        setTimeout(function() {
-          cb()
-        }, TIMING)
-      }
-    },
-
-    alert: function(msg) {
-      $('.am-main').prepend(Handlebars.compile('{{>alert}}')({
-        msg: msg,
-        status: 'warning'
-      }))
-      $('#alert').alert()
-      setTimeout(function() {
-        $('#alert-close').click()
-      }, 3 * TIMING)
-    }
-
   },
 
   getQueryString: function(name) {
@@ -137,7 +94,7 @@ Utils.UI.toastinit()
 $( document ).ajaxError(function(event, jqxhr, settings, thrownError) {
   console.error([event, jqxhr, settings, thrownError])
   // Utils.UI.toast('系统异常，请稍后重试...')
-  Utils.forward('./unicorn.html')
+  // Utils.forward('./unicorn.html')
 })
 
 $( document ).ajaxComplete(function( event, xhr, settings ) {
