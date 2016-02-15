@@ -1,0 +1,6 @@
+{{#each this}}
+<li>
+  <a class="am-close am-close-alt am-icon-times am-img-close"></a>
+  <div class="am-gallery-item"><img src={{img}}></div>
+</li>
+{{/each}}

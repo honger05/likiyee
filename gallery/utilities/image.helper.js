@@ -1,7 +1,7 @@
 
 module.exports = {
 
-  resizeImageFile: function(file, maxWidth, maxHeight, callback) {
+  resizeImageFile: function(file, maxWidth, maxHeight, ratio, callback) {
   	var Img = new Image()
   	var canvas = document.createElement('canvas')
   	var ctx = canvas.getContext('2d')
@@ -24,7 +24,7 @@ module.exports = {
 
   		ctx.drawImage(Img, 0, 0, Img.width, Img.height, 0, 0, canvas.width, canvas.height)
 
-  		callback(canvas.toDataURL('image/jpeg', 0.5))
+  		callback(canvas.toDataURL('image/jpeg', ratio))
   	}
 
   	try {

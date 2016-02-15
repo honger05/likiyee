@@ -8,6 +8,8 @@ var survey_session = Utils.Storage.get(Utils.Storage.SURVEY_SESSION)
 
 // Utils.Utilities.checkStatus(survey_session.applySerialNo, Utils.Storage.SURVEY_SESSION)
 
+requestSurveyDetail()
+
 var Promise = window.Promise || require('es6-promise').Promise
 
 var galleryTemplate = Handlebars.compile('{{>gallery}}')
@@ -28,7 +30,7 @@ var galleryData = {
   }
 }
 
-requestSurveyDetail()
+var firstFlag = true
 
 function requestSurveyDetail() {
   $.post(Utils.URL.SURVEY_DETAIL, {
@@ -36,7 +38,7 @@ function requestSurveyDetail() {
   })
   .done(function(data) {
     if (data.status === 'success') {
-      var _html = Handlebars.compile($('#detail-tmpl').html())(data.content)
+      var _html = Handlebars.compile(require('./detail.ghbs'))(data.content)
       $('#main').append(_html)
     }
   })
@@ -57,26 +59,46 @@ function displayImages(files, zoom, upBtn, name) {
 
   var filePromises = Array.prototype.map.call(files, function(file) {
     return new Promise(function(resolve, reject) {
-      Utils.IMAGE.resizeImageFile(file, 2280, 2280, function(dataURL) {
+      Utils.IMAGE.resizeImageFile(file, 2280, 2280, 0.2, function(dataURL) {
         resolve({"img": dataURL})
       })
     })
   })
 
   Promise.all(filePromises).then(function(dataURL) {
+    galleryData[name].content = galleryData[name].content.concat(dataURL)
     if (!$(zoom).html()) {
-      galleryData[name].content = dataURL
       $(zoom).append(galleryTemplate(galleryData[name]))
     }
     else {
-      var li_template = '{{#each this}}<li><a class="am-close am-close-alt am-icon-times am-img-close"></a><div class="am-gallery-item"><img src={{img}}></div></li>{{/each}}'
+      var li_template = require('./img-item.ghbs')
       $(zoom).find('.am-gallery').append(Handlebars.compile(li_template)(dataURL))
     }
 
     $(zoom).find('.am-gallery').pureview()
     upBtn.button('reset')
+
+    if (firstFlag) {
+      firstFlag = false
+      galleryData[name].firstFlag = true
+    }
+
   })
 
+}
+
+function deleteImages() {
+  var $li = $(this).parent()
+  var $gallery = $li.parent()
+  var index = $gallery.find('li').index($li)
+  $li.remove()
+  var name = $gallery.parent().attr('data-name')
+  galleryData[name].content.splice(index, 1)
+  var name_index = 1
+  if (galleryData[name].firstFlag) {
+    name_index = 0
+  }
+  $('.am-pureview-slider').eq(name_index).find('li').eq(index).remove()
 }
 
 function submitSurvey() {
@@ -106,9 +128,4 @@ $('#up-company').on('change', function() {
 
 $('#submitBtn').on('click', submitSurvey)
 
-$(document).on('click', '.am-img-close', function() {
-  var $li = $(this).parent()
-  var index = $li.parent().find('li').index($li)
-  $li.remove()
-  $li.parent().pureview()
-})
+$(document).on('click', '.am-img-close', deleteImages)

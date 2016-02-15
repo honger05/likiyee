@@ -1,7 +1,6 @@
 
 var UI = require('./ui.helper')
 var Utilities = require('./utilities')
-var _ = require('underscore')
 
 $(document).ajaxStart(function() {
   $.AMUI.progress.inc(0.5)
@@ -14,8 +13,13 @@ $(document).ajaxStop(function() {
 });
 
 $(document).ajaxSend(function(event, request, settings) {
-  settings.data = _.assign({}, settings.data, {mobileLogin: true})
-  console.log('ajax send =======' + settings.data);
+  if (settings.data) {
+    settings.data += '&mobileLogin=true'
+  }
+  else {
+    settings.data = 'mobileLogin=true'
+  }
+  console.log('[ajax send =======] ' + settings.data);
 });
 
 $( document ).ajaxComplete(function( event, xhr, settings ) {

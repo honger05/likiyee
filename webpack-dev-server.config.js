@@ -109,6 +109,10 @@ var devConfig = {
         loader: 'handlebars-loader'
       },
       {
+        test: /\.ghbs$/,
+        loader: path.resolve(__dirname, "loaders/ghbs-loader")
+      },
+      {
         test: path.join(config.path.gallery, '/lib/jquery'),
         loader: 'expose?jQuery'
       },

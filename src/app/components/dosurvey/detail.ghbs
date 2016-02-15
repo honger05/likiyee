@@ -1,0 +1,24 @@
+<div class="yj-form-item">
+  <label for="" class="yj-label">申请编号:</label>
+  <p class="yj-form-text">{{applySerialNo}}</p>
+</div>
+<div class="yj-form-item">
+  <label for="" class="yj-label">姓名:</label>
+  <p class="yj-form-text">{{customerName}}</p>
+</div>
+<div class="yj-form-item">
+  <label for="" class="yj-label">出生日期:</label>
+  <p class="yj-form-text">{{birthDay}}</p>
+</div>
+<div class="yj-form-item">
+  <label for="" class="yj-label">申请金额:</label>
+  <p class="yj-form-text"><span class="am-rmb">{{planBusinessSum}}</span>元</p>
+</div>
+<div class="yj-form-item">
+  <label for="" class="yj-label">核定金额:</label>
+  <p class="yj-form-text"><span class="am-rmb">{{checkBusinessSum}}</span>元</p>
+</div>
+<div class="yj-form-item">
+  <label for="" class="yj-label">问题描述:</label>
+  <p class="yj-form-text">{{phaseOpinion}}</p>
+</div>
