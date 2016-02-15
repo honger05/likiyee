@@ -69,14 +69,14 @@ $('#loginForm').submit(function(ev) {
        if (data && data.status === 'success') {
          CEIS.sessionid = data.content.sessionid;
          CEIS.firstLogin = data.content.firstLogin;
-         Utils.storage.set(Utils.storage.CEIS_SESSION, CEIS)
+         Utils.Storage.set(Utils.Storage.CEIS_SESSION, CEIS)
          if (CEIS.firstLogin) {
            Utils.UI.toast('首次登陆或密码过期，请修改密码！')
-           Utils.replace('./modifypwd.html')
+           Utils.Utilities.replace('./modifypwd.html')
          }
          else {
            Utils.UI.toast('登录成功！')
-           Utils.replace('./index.html')
+           Utils.Utilities.replace('./index.html')
          }
        }
        else {

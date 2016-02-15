@@ -3,7 +3,7 @@ var Utils = require('utils')
 require('../../common/common.scss')
 var _ = require('underscore')
 
-var params = Utils.getQueryString('p'), repayType
+var params = Utils.Utilities.getQueryString('p'), repayType
 
 switch (params) {
   case '1':
@@ -15,7 +15,7 @@ switch (params) {
     $('#title').html('逾期扣款')
     break;
   default:
-    Utils.forward('./index.html')
+    Utils.Utilities.forward('./index.html')
 }
 
 var repay_list = []
@@ -70,11 +70,11 @@ var pull = new Utils.Pull(null, {
 $('#repay-list').on('tap', 'li', function() {
   var objectno = $(this).find('[data-objectno]').data('objectno')
   if (objectno) {
-    Utils.storage.set(Utils.storage.PAY_SESSION, {
+    Utils.Storage.set(Utils.Storage.PAY_SESSION, {
       objectNo: objectno,
       repayType: repayType
     })
-    Utils.forward('./dowithheld.html')
+    Utils.Utilities.forward('./dowithheld.html')
   }
 })
 

@@ -27,9 +27,9 @@ var pull = new Utils.Pull(null, {
 $('#list-tmpl').on('tap', 'li', function() {
   var applyno = $(this).find('[data-applyno]').data('applyno')
   if (applyno) {
-    Utils.storage.set(Utils.storage.SURVEY_SESSION, {
+    Utils.Storage.set(Utils.Storage.SURVEY_SESSION, {
       applySerialNo: applyno
     })
-    Utils.forward('./dosurvey.html')
+    Utils.Utilities.forward('./dosurvey.html')
   }
 })

@@ -8,8 +8,8 @@ $('#logout').on('click', function() {
   $.post(Utils.URL.LOGOUT)
     .done(function(data) {
       if (data.status === 'success') {
-        Utils.storage.set('ceis')
-        Utils.forward('./login.html')
+        Utils.Storage.set('ceis')
+        Utils.Utilities.forward('./login.html')
       }
     })
 })

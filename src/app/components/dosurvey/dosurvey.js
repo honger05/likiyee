@@ -4,7 +4,9 @@ require('../../common/common.scss')
 require('./dosurvey.scss')
 var _ = require('underscore')
 
-var survey_session = Utils.storage.get(Utils.storage.SURVEY_SESSION)
+var survey_session = Utils.Storage.get(Utils.Storage.SURVEY_SESSION)
+
+// Utils.Utilities.checkStatus(survey_session.applySerialNo, Utils.Storage.SURVEY_SESSION)
 
 var Promise = window.Promise || require('es6-promise').Promise
 
@@ -40,8 +42,6 @@ function requestSurveyDetail() {
   })
 }
 
-var ind = 1;
-
 function displayImages(files, zoom, upBtn, name) {
   upBtn.button('loading')
 
@@ -64,25 +64,17 @@ function displayImages(files, zoom, upBtn, name) {
   })
 
   Promise.all(filePromises).then(function(dataURL) {
-    galleryData[name].content = galleryData[name].content.concat(dataURL)
-    
-    if (ind == 1) {
-      ind += 1
-      $(zoom).append(galleryTemplate(dataURL))
-      $(zoom).find('.am-gallery').pureview()
-    } 
-    else {
-      var li_template = '{{#each this}}<li><a class="am-close am-close-alt am-icon-times am-img-close"></a><div class="am-gallery-item"><img src={{img}} data-am-pureviewed="1"></div></li>{{/each}}'
-      $(zoom).append(Handlebars.compile(li_template)(dataURL))
+    if (!$(zoom).html()) {
+      galleryData[name].content = dataURL
+      $(zoom).append(galleryTemplate(galleryData[name]))
     }
-    
+    else {
+      var li_template = '{{#each this}}<li><a class="am-close am-close-alt am-icon-times am-img-close"></a><div class="am-gallery-item"><img src={{img}}></div></li>{{/each}}'
+      $(zoom).find('.am-gallery').append(Handlebars.compile(li_template)(dataURL))
+    }
 
-    // $(zoom).find('.am-gallery').remove()
-    // $(zoom).append(galleryTemplate(galleryData[name]))
-    // $(zoom).find('.am-gallery').pureview()
-    setTimeout(function() {
-      upBtn.button('reset')
-    }, 400)
+    $(zoom).find('.am-gallery').pureview()
+    upBtn.button('reset')
   })
 
 }
@@ -98,20 +90,10 @@ function submitSurvey() {
     .done(function(data) {
       if (data.status === 'success') {
         Utils.UI.toast(data.msg, function() {
-          Utils.forward('./survey.html')
+          Utils.Utilities.forward('./survey.html')
         })
       }
     })
-}
-
-function checkStatus() {
-  if (!survey_session.applySerialNo) {
-    Utils.replace('./index.html')
-  }
-
-  Utils.unload(function() {
-    Utils.storage.set(Utils.storage.SURVEY_SESSION)
-  })
 }
 
 $('#up-house').on('change', function() {
@@ -128,4 +110,5 @@ $(document).on('click', '.am-img-close', function() {
   var $li = $(this).parent()
   var index = $li.parent().find('li').index($li)
   $li.remove()
+  $li.parent().pureview()
 })

@@ -2,27 +2,27 @@
 var Utils = require('utils')
 require('../../common/common.scss')
 
-var pay_session = Utils.storage.get(Utils.storage.PAY_SESSION)
+var pay_session = Utils.Storage.get(Utils.Storage.PAY_SESSION)
 
 switch (pay_session.repayType) {
   case 'PREPAY':
     $('#title').html('预扣款操作')
     $('#chevron-left').on('click', function() {
-      Utils.replace('./withheld.html?p=1')
+      Utils.Utilities.replace('./withheld.html?p=1')
     })
     break;
   case 'OVERPAY':
     $('#title').html('逾期扣款操作')
     $('#chevron-left').on('click', function() {
-      Utils.replace('./withheld.html?p=2')
+      Utils.Utilities.replace('./withheld.html?p=2')
     })
     break;
   default:
-    Utils.replace('./index.html')
+    Utils.Utilities.replace('./index.html')
 }
 
-Utils.unload(function() {
-  Utils.storage.set(Utils.storage.PAY_SESSION)
+Utils.Utilities.unload(function() {
+  Utils.Storage.set(Utils.Storage.PAY_SESSION)
 })
 
 $.post(Utils.URL.REPAY_DETAIL, pay_session)

@@ -25,7 +25,7 @@ var route = [
 
 var proConfig = {
   entry: {
-    common: ['jquery', 'handlebars', 'amazeui']
+    common: ['jquery', 'handlebars', 'amazeui', 'underscore', 'utils']
   },
   output: {
     path: distPath,
