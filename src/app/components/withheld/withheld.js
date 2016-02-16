@@ -20,7 +20,20 @@ switch (params) {
 
 var repay_list = []
 
-$('#with-smtBtn').on('tap', function(ev) {
+var pull = new Utils.Pull(null, {
+  start: 1,
+  count: 10,
+  item_tmpl: require('./item.hbs'),
+  list_id: '#repay-list',
+  pagenation: pagenation
+})
+
+requestRepayList()
+
+function searchList(ev) {
+  ev.preventDefault()
+  ev.stopPropagation()
+  
   var $certId = $('#certId'),
       $userName = $('#userName'),
       userName_val = $.trim($userName.val()),
@@ -35,8 +48,18 @@ $('#with-smtBtn').on('tap', function(ev) {
       userName: userName_val
     })
   }
+}
 
-})
+function tabItem() {
+ var objectno = $(this).find('[data-objectno]').data('objectno')
+ if (objectno) {
+   Utils.Storage.set(Utils.Storage.PAY_SESSION, {
+     objectNo: objectno,
+     repayType: repayType
+   })
+   Utils.Utilities.forward('./dowithheld.html')
+ }
+}
 
 function pagenation(start, count) {
   return [ repay_list.slice(start - 1, count +　start - 1), repay_list.length ]
@@ -59,23 +82,6 @@ function requestRepayList(params) {
     })
 }
 
-var pull = new Utils.Pull(null, {
-  start: 1,
-  count: 10,
-  item_tmpl: require('./item.hbs'),
-  list_id: '#repay-list',
-  pagenation: pagenation
-})
+$('#repay-list').on('tap', 'li', tabItem)
 
-$('#repay-list').on('tap', 'li', function() {
-  var objectno = $(this).find('[data-objectno]').data('objectno')
-  if (objectno) {
-    Utils.Storage.set(Utils.Storage.PAY_SESSION, {
-      objectNo: objectno,
-      repayType: repayType
-    })
-    Utils.Utilities.forward('./dowithheld.html')
-  }
-})
-
-requestRepayList()
+$(document).on('tap', '#with-smtBtn', searchList)

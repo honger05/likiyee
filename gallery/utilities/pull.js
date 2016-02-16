@@ -59,6 +59,8 @@ var Pull = function(element, options) {
 
   this.init = function() {
     var myScroll = this.iScroll = new iScroll('#wrapper', {
+      disableMouse: true,
+      disablePointer: true,
       // click: true
       tap: true
     })

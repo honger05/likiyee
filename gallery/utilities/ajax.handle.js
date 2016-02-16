@@ -28,10 +28,10 @@ $( document ).ajaxComplete(function( event, xhr, settings ) {
   // settings.url,
   var res_data = JSON.parse(xhr.responseText)
   console.log(res_data)
+  console.table(res_data.content)
 
   switch (res_data.status) {
     case 'unlogin':
-      debugger;
       Utilities.replace('./login.html')
       break;
     case 'warning':
@@ -47,7 +47,7 @@ $( document ).ajaxComplete(function( event, xhr, settings ) {
 })
 
 $( document ).ajaxError(function(event, jqxhr, settings, thrownError) {
-  console.error([event, jqxhr, settings, thrownError])
+  console.log(['Ajax Error', event, jqxhr, settings, thrownError])
   UI.toast('系统异常，请稍后重试...')
   // Utilities.forward('./unicorn.html')
 })
