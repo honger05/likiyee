@@ -1,6 +1,6 @@
 
 var Utils = require('utils')
-require('../../common/common.scss')
+
 var _ = require('underscore')
 
 var params = Utils.Utilities.getQueryString('p'), repayType
@@ -62,7 +62,7 @@ function requestRepayList(params) {
 var pull = new Utils.Pull(null, {
   start: 1,
   count: 10,
-  item_id: require('./item.hbs'),
+  item_tmpl: require('./item.hbs'),
   list_id: '#repay-list',
   pagenation: pagenation
 })

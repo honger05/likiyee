@@ -1,7 +1,7 @@
 
 var Utils = require('utils')
-require('../../common/common.scss')
 require('./dosurvey.scss')
+
 var _ = require('underscore')
 
 var survey_session = Utils.Storage.get(Utils.Storage.SURVEY_SESSION)

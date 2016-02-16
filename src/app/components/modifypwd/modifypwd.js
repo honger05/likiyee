@@ -1,6 +1,5 @@
 
 var Utils = require('utils')
-require('../../common/common.scss')
 
 $('#modify-form').on('submit', function(ev) {
   ev.preventDefault()

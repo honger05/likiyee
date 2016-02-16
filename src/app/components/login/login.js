@@ -1,6 +1,6 @@
 
 var Utils = require('utils')
-require('../../common/common.scss')
+
 require('./login.scss')
 
 var CEIS = {}

@@ -1,6 +1,5 @@
 
 var Utils = require('utils')
-require('../../common/common.scss')
 
 var pay_session = Utils.Storage.get(Utils.Storage.PAY_SESSION)
 

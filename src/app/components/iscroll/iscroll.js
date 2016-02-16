@@ -1,6 +1,6 @@
 
 var Utils = require('utils')
-require('../../common/common.scss')
+
 require('./iscroll.css')
 
 var EventsList = function(element, options) {

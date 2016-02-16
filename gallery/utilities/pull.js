@@ -9,7 +9,7 @@ var Pull = function(element, options) {
   var topOffset = -$pullDown.outerHeight()
   var iScroll = $.AMUI.iScroll
 
-  this.compiler = Handlebars.compile(options.item_str)
+  this.compiler = Handlebars.compile(options.item_tmpl)
   this.prev = this.next = this.start = options.start
   this.total = null
 

@@ -1,5 +1,6 @@
 
 require('amazeui/less/amazeui.less')
+require('../common/common.scss')
 
 require('./error.report')
 require('./ajax.handle')
