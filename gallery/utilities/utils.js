@@ -8,6 +8,8 @@ require('./widgets.helper')
 
 var Utils = {
 
+  Cookies: require('./cookies'),
+
   RSA: require('./rsa.helper'),
 
   REG: require('./regexp.helper'),

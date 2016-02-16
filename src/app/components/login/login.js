@@ -69,6 +69,7 @@ $('#loginForm').submit(function(ev) {
        if (data && data.status === 'success') {
          CEIS.sessionid = data.content.sessionid;
          CEIS.firstLogin = data.content.firstLogin;
+         Utils.Cookies.set('ceis.session.id', data.content.sessionid)
          Utils.Storage.set(Utils.Storage.CEIS_SESSION, CEIS)
          if (CEIS.firstLogin) {
            Utils.UI.toast('首次登陆或密码过期，请修改密码！')

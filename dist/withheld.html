@@ -33,7 +33,7 @@
 <meta name="msapplication-TileColor" content="#0e90d2">
 <link rel="stylesheet" href="styles/common.css?sdjfowerwmerftor" />
 
-<link href="styles/withheld.css?afdbebd80bdf571b85bb" rel="stylesheet"></head>
+</head>
 <body>
 
   <header class="am-header am-header-default">
@@ -50,7 +50,7 @@
           查询条件
         </div>
         <div class="am-panel-bd">
-          <form class="am-form" id="searchForm">
+          <form class="am-form" id="with-searchForm">
               <div class="am-form-group">
                 <input type="text" name="certId" id="certId" placeholder="身份证后四位">
               </div>
@@ -58,7 +58,7 @@
                 <input type="text" name="userName" id="userName" placeholder="借款人姓名">
               </div>
               <p>
-                <button id="smtBtn" type="submit" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom"
+                <button id="with-smtBtn" type="button" class="am-btn am-btn-primary am-btn-block am-animation-slide-bottom"
                   data-am-loading="{loadingText: '努力查询中...'}">
                   <i class="am-icon-search"></i> 查询
                 </button>
@@ -79,31 +79,12 @@
               id="pull-up-label"> 上拉加载更多</span>
         <span class="am-icon-spinner am-icon-spin"></span>
       </div>
+
     </div>
   </div>
-
-  <script type="text/x-handlebars-template" id="repay-item">
-    {{#each this}}
-    <li>
-      <a href="javascript:void(0)">
-        <div class="item-main">
-          <div class="item-title-row">
-            <h3 class="item-title" data-objectno={{loanApplySerialNo}}>{{loanApplySerialNo}}</h3>
-            <div class="item-subtitle-l am-fr">身份证后四位：<span class="am-cid">{{certId}}</span></div>
-            <div class="item-after">{{customerName}}</div>
-            <i class="icon am-icon-angle-right am-fr"></i>
-          </div>
-          <div class="item-subtitle">
-            <div class="item-subtitle-r">应还金额：<span class="am-rmb">{{repayAmount}}</span> 元</div>
-          </div>
-        </div>
-      </a>
-    </li>
-    {{/each}}
-  </script>
 
   
 <script src="scripts/common.js?aeturihgfnknvdfjg"></script>
 
-<script src="./scripts/withheld.bundle.js?afdbebd80bdf571b85bb"></script></body>
+<script src="./scripts/withheld.bundle.js?2044bb1e8ba3fdaa4724"></script></body>
 </html>
