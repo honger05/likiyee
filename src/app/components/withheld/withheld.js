@@ -62,7 +62,7 @@ function requestRepayList(params) {
 var pull = new Utils.Pull(null, {
   start: 1,
   count: 10,
-  item_id: '#repay-item',
+  item_id: require('./item.hbs'),
   list_id: '#repay-list',
   pagenation: pagenation
 })

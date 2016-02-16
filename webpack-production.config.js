@@ -86,16 +86,17 @@ var proConfig = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader')
       },{
-        test: /\.hbs$/,
-        loader: 'handlebars'
-      },{
         test: /\.(jpg|png|gif)$/i,
         loader: "url-loader?limit=1000&name=img/[name]-[hash:10].[ext]",
         include: path.resolve(config.path.src)
       },
       {
-        test: /\.hbs$/,
+        test: /\.handlebars$/,
         loader: 'handlebars-loader'
+      },
+      {
+        test: /\.hbs$/,
+        loader: path.resolve(__dirname, "loaders/hbs-loader")
       },
       {
         test: path.join(config.path.gallery, '/lib/handlebars'),

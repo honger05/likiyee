@@ -83,10 +83,6 @@ var devConfig = {
   ],
   module: {
     loaders: [
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   loader: 'babel'
-      // },
       {
         test: /\.less$/,
         loader: 'style!css!autoprefixer!less'
@@ -100,17 +96,13 @@ var devConfig = {
         test: /\.(jpg|png|gif)$/i,
         loader: "url-loader?limit=1000&name=img/[name]-[hash:10].[ext]"
       },
-      // {
-      //   test: /\.html$/,
-      //   loader: 'html'
-      // },
       {
-        test: /\.hbs$/,
+        test: /\.handlebars$/,
         loader: 'handlebars-loader'
       },
       {
-        test: /\.ghbs$/,
-        loader: path.resolve(__dirname, "loaders/ghbs-loader")
+        test: /\.hbs$/,
+        loader: path.resolve(__dirname, "loaders/hbs-loader")
       },
       {
         test: path.join(config.path.gallery, '/lib/jquery'),

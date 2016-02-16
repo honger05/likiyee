@@ -19,7 +19,7 @@ function pagenation(start, count) {
 var pull = new Utils.Pull(null, {
   start: 1,
   count: 10,
-  item_id: '#item-tmpl',
+  item_str: require('./survey-item.hbs'),
   list_id: '#list-tmpl',
   pagenation: pagenation
 })

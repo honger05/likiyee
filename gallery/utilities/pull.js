@@ -9,7 +9,7 @@ var Pull = function(element, options) {
   var topOffset = -$pullDown.outerHeight()
   var iScroll = $.AMUI.iScroll
 
-  this.compiler = Handlebars.compile($(options.item_id).html())
+  this.compiler = Handlebars.compile(options.item_str)
   this.prev = this.next = this.start = options.start
   this.total = null
 
@@ -46,7 +46,7 @@ var Pull = function(element, options) {
         _this.iScroll.scrollTo(0, topOffset, 800, iScroll.utils.circular)
       }
 
-    }, 1000)
+    }, 400)
   }
 
   this.setLoading = function($el) {

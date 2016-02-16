@@ -1,0 +1,16 @@
+{{#each this}}
+<li>
+  <a href="javascript:void(0)">
+    <div class="item-main">
+      <div class="item-title-row am-cf">
+        <h3 class="item-title am-fl" data-applyno={{applySerialNo}}>{{applySerialNo}}</h3>
+        <div class="item-after am-fr">{{beginDate}}</div>
+      </div>
+      <div class="item-subtitle">
+        <i class="icon am-icon-angle-right am-fr"></i>
+        <div class="item-subtitle-r">核定可贷金额：<span class="am-rmb">{{planBusinessSum}}</span> 元</div>
+      </div>
+    </div>
+  </a>
+</li>
+{{/each}}

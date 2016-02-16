@@ -38,7 +38,7 @@ function requestSurveyDetail() {
   })
   .done(function(data) {
     if (data.status === 'success') {
-      var _html = Handlebars.compile(require('./detail.ghbs'))(data.content)
+      var _html = Handlebars.compile(require('./detail.hbs'))(data.content)
       $('#main').append(_html)
     }
   })
@@ -71,7 +71,7 @@ function displayImages(files, zoom, upBtn, name) {
       $(zoom).append(galleryTemplate(galleryData[name]))
     }
     else {
-      var li_template = require('./img-item.ghbs')
+      var li_template = require('./img-item.hbs')
       $(zoom).find('.am-gallery').append(Handlebars.compile(li_template)(dataURL))
     }
 

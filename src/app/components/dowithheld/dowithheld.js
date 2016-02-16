@@ -28,7 +28,7 @@ Utils.Utilities.unload(function() {
 $.post(Utils.URL.REPAY_DETAIL, pay_session)
   .done(function(data) {
     if (data.status === 'success') {
-      var _html = Handlebars.compile($('#detail-tmpl').html())(data.content)
+      var _html = Handlebars.compile(require('./detail.hbs'))(data.content)
       $('#main').append(_html)
     }
   })

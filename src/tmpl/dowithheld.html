@@ -58,31 +58,6 @@
     </div>
   </div>
 
-  <script type="text/x-handlebars-template" id="detail-tmpl">
-    <div class="yj-form">
-      <div class="yj-form-item">
-        <label for="" class="yj-label">借款人:</label>
-        <p class="yj-form-text">{{customerName}}</p>
-      </div>
-      <div class="yj-form-item">
-        <label for="" class="yj-label">借据编号:</label>
-        <p class="yj-form-text">{{loanApplySerialNo}}</p>
-      </div>
-      <div class="yj-form-item">
-        <label for="" class="yj-label">身份证后四位:</label>
-        <p class="yj-form-text">{{certId}}</p>
-      </div>
-      <div class="yj-form-item">
-        <label for="" class="yj-label">还款日期:</label>
-        <p class="yj-form-text">{{repayDate}}</p>
-      </div>
-      <div class="yj-form-item">
-        <label for="" class="yj-label">总计应还:</label>
-        <p class="yj-form-text"><span class="am-rmb">{{repayAmount}}</span>元</p>
-      </div>
-    </div>
-  </script>
-
   <%= require('html!./inc-footer.html') %>
 </body>
 </html>
