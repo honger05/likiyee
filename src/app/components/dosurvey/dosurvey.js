@@ -14,6 +14,10 @@ var Promise = window.Promise || require('es6-promise').Promise
 
 var galleryTemplate = Handlebars.compile('{{>gallery}}')
 
+var MAXNUM = 200, MAXIMG = 50
+
+var up_ing = false
+
 var options = {
   "cols": 6,
   "gallery": true
@@ -38,7 +42,28 @@ function requestSurveyDetail() {
   })
   .done(function(data) {
     if (data.status === 'success') {
-      var _html = Handlebars.compile(require('./detail.hbs'))(data.content)
+      var apply = data.content
+      if (!apply) {
+        Utils.UI.toast('该笔申请无数据')
+      }
+      switch (apply.customerType) {
+        case "001":
+          apply.customerType = '标准受薪'
+          break;
+        case "002":
+          apply.customerType = '优良职业'
+          break;
+        case "003":
+          apply.customerType = '自雇人士'
+          break;
+        case "004":
+          apply.customerType = '用友企业客户'
+          break;
+        default:
+          // no code
+      }
+
+      var _html = Handlebars.compile(require('./detail.hbs'))(apply)
       $('#main').append(_html)
     }
   })
@@ -102,12 +127,37 @@ function deleteImages() {
 }
 
 function submitSurvey() {
-  var req_data = {
-    homefiles: ['sdsdsdsd'].concat(_.pluck(galleryData.house.content, 'img')),
-    companyfiles: ['sdsdsdsd'].concat(_.pluck(galleryData.company.content, 'img')),
-    applySerialNo: survey_session.applySerialNo,
-    remarks: $('#remark-txa').val()
+  var remark_str = $('#remark-txa').val()
+
+  if (galleryData.house.content.length === 0 &&
+    galleryData.company.content.length === 0 && remark_str === '') {
+    Utils.UI.toast('图片和备注必填一项！')
+    return false
   }
+
+  if (remark_str.length > MAXNUM) {
+    Utils.UI.toast('备注信息不能大于' + MAXNUM + '个字符')
+    return false
+  }
+
+  if (galleryData.house.content.length + galleryData.company.content.length > MAXIMG) {
+    Utils.UI.toast('上传图片不能超过 ' +　MAXIMG + ' 张')
+    return false
+  }
+
+  if (up_ing) {
+    Utils.UI.toast('正在上传中...')
+    return false
+  }
+
+  var req_data = {
+    homefiles: ['test'].concat(_.pluck(galleryData.house.content, 'img')),
+    companyfiles: ['test'].concat(_.pluck(galleryData.company.content, 'img')),
+    applySerialNo: survey_session.applySerialNo,
+    remarks: remark_str
+  }
+
+  up_ing = true
   $.post(Utils.URL.SURVEY_SAVE, req_data)
     .done(function(data) {
       if (data.status === 'success') {
@@ -115,6 +165,9 @@ function submitSurvey() {
           Utils.Utilities.forward('./survey.html')
         })
       }
+    })
+    .always(function() {
+      up_ing = false
     })
 }
 

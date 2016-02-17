@@ -49,5 +49,6 @@ $( document ).ajaxComplete(function( event, xhr, settings ) {
 $( document ).ajaxError(function(event, jqxhr, settings, thrownError) {
   console.log(['Ajax Error', event, jqxhr, settings, thrownError])
   UI.toast('系统异常，请稍后重试...')
+  $.AMUI.progress.done()
   // Utilities.forward('./unicorn.html')
 })
