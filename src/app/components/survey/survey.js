@@ -1,4 +1,13 @@
 
+var isAndroid = (window.navigator.userAgent || '').toLowerCase().indexOf('YJS_Android') !== -1;
+
+alert(isAndroid)
+
+if (isAndroid) {
+  require('./cordova')
+  require('./cordova.plugin')
+}
+
 var Utils = require('utils')
 
 var _list = []
