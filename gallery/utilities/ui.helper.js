@@ -1,5 +1,5 @@
 
-var TIMING = 1000
+var TIMING = 3000
 
 module.exports = {
 

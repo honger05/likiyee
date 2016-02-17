@@ -76,7 +76,7 @@ function requestDetail() {
       if (data.status === 'success') {
         data_detail = data.content
         var _html = Handlebars.compile(require('./detail.hbs'))(data.content)
-        $('#main').append(_html)
+        $('#main').html(_html)
       }
     })
 }

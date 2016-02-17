@@ -82,9 +82,21 @@ function displayImages(files, zoom, upBtn, name) {
     return;
   }
 
+  var isOverSize = _(files).every(function(file) {
+    console.log(file.size / 1024 + ' KB');
+    return file.size < 4 * 1024 * 1024
+  })
+
+  if (!isOverSize) {
+    Utils.UI.toast('单张图片大小不能大于 4 MB')
+    upBtn.button('reset')
+    return;
+  }
+
   var filePromises = Array.prototype.map.call(files, function(file) {
     return new Promise(function(resolve, reject) {
       Utils.IMAGE.resizeImageFile(file, 2280, 2280, 0.2, function(dataURL) {
+        console.log(dataURL.length / 1024 + ' KB');
         resolve({"img": dataURL})
       })
     })
