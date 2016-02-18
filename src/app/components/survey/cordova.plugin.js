@@ -34,4 +34,4 @@ var phone_gap = {
   },
 };
 
-window.phoneGap = phone_gap;
+module.exports = phone_gap;

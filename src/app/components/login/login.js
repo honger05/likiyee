@@ -1,20 +1,4 @@
 
-var isAndroid = (window.navigator.userAgent || '').indexOf('YJS_Android') !== -1;
-
-
-alert(isAndroid)
-
-if (isAndroid) {
-  require('./cordova')
-  require('./cordova.plugin')
-}
-
-window.phoneGap.itemclick(function() {
-  alert(1111111133111)
-}, function() {
-  alert(2)
-}, '121')
-
 var Utils = require('utils')
 
 require('./login.scss')

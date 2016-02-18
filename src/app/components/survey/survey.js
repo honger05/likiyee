@@ -1,11 +1,9 @@
 
-var isAndroid = (window.navigator.userAgent || '').toLowerCase().indexOf('YJS_Android') !== -1;
-
-alert(isAndroid)
+var phone_gap, isAndroid = (window.navigator.userAgent || '').indexOf('YJS_Android') !== -1
 
 if (isAndroid) {
-  require('./cordova')
-  require('./cordova.plugin')
+  require('./cordova.min')
+  phone_gap = require('./cordova.plugin')
 }
 
 var Utils = require('utils')
@@ -35,9 +33,13 @@ var pull = new Utils.Pull(null, {
 $('#list-tmpl').on('tap', 'li', function() {
   var applyno = $(this).find('[data-applyno]').data('applyno')
   if (applyno) {
-    Utils.Storage.set(Utils.Storage.SURVEY_SESSION, {
-      applySerialNo: applyno
-    })
-    Utils.Utilities.forward('./dosurvey.html')
+    if (isAndroid) {
+      phone_gap.itemclick(null, null, applyno)
+    } else {
+      Utils.Storage.set(Utils.Storage.SURVEY_SESSION, {
+        applySerialNo: applyno
+      })
+      Utils.Utilities.forward('./dosurvey.html')
+    }
   }
 })
