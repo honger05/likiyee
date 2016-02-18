@@ -1,10 +1,11 @@
 
-var phone_gap, isAndroid = (window.navigator.userAgent || '').indexOf('YJS_Android') !== -1
+var isAndroid = (window.navigator.userAgent || '').indexOf('YJS_Android') !== -1
 
 if (isAndroid) {
   require('./cordova.min')
-  phone_gap = require('./cordova.plugin')
-  phone_gap.initialize()
+  require('./cordova.plugin').initialize()
+} else {
+  $('#list-tmpl').on('tap', 'li', itemclick)
 }
 
 var Utils = require('utils')
@@ -40,5 +41,3 @@ function itemclick() {
     Utils.Utilities.forward('./dosurvey.html')
   }
 }
-
-$('#list-tmpl').on('tap', 'li', itemclick)
