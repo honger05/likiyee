@@ -19,7 +19,7 @@ var phone_gap = {
   // The scope of 'this' is the event. In order to call the 'receivedEvent'
   // function, we must explicity call 'app.receivedEvent(...);'
   onDeviceReady: function() {
-    document.addEventListener("backbutton", phone_gap.onBackKeyDown, false);
+    $('#list-tmpl').on('tap', 'li', phone_gap.itemclick)
   },
 
   /**
@@ -27,10 +27,11 @@ var phone_gap = {
   * sucCallback: 成功回调，返回结果。
   * failCallback：失败回调
   **/
-  itemclick : function( sucCallback, failCallback, sno) {
+  itemclick: function( sucCallback, failCallback, sno) {
+    var applyno = $(this).find('[data-applyno]').data('applyno')
     sucCallback = sucCallback || function(){};
     failCallback = failCallback || function(){};
-    cordova.exec(sucCallback, failCallback, "YJSPlugin", "chooseimage", [sno]);
+    cordova.exec(sucCallback, failCallback, "YJSPlugin", "chooseimage", [applyno]);
   },
 };
 
