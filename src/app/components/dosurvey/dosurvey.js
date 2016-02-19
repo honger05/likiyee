@@ -1,4 +1,23 @@
 
+var isAndroid = (window.navigator.userAgent || '').indexOf('YJS_Android') !== -1
+
+if (isAndroid) {
+  require('./cordova.min')
+  require('./cordova.plugin').initialize(function(files, display, selection, type) {
+    displayImages(files, display, selection, type, true)
+  })
+} else {
+  $('#up-house').on('change', function() {
+    displayImages(this.files, '#file-list-house', $(this).prev(), 'house')
+  })
+
+  $('#up-company').on('change', function() {
+    displayImages(this.files, '#file-list-company', $(this).prev(), 'company')
+  })
+}
+
+
+//=========================
 var Utils = require('utils')
 require('./dosurvey.scss')
 
@@ -69,7 +88,13 @@ function requestSurveyDetail() {
   })
 }
 
-function displayImages(files, zoom, upBtn, name) {
+function displayImages(files, zoom, upBtn, name, base64) {
+
+  if (base64) {
+    createGallery(files)
+    return;
+  }
+
   upBtn.button('loading')
 
   var isAllImg = _(files).every(function(file) {
@@ -102,7 +127,9 @@ function displayImages(files, zoom, upBtn, name) {
     })
   })
 
-  Promise.all(filePromises).then(function(dataURL) {
+  Promise.all(filePromises).then(createGallery)
+
+  function createGallery(dataURL) {
     galleryData[name].content = galleryData[name].content.concat(dataURL)
     if (!$(zoom).html()) {
       $(zoom).append(galleryTemplate(galleryData[name]))
@@ -119,8 +146,7 @@ function displayImages(files, zoom, upBtn, name) {
       firstFlag = false
       galleryData[name].firstFlag = true
     }
-
-  })
+  }
 
 }
 
@@ -182,14 +208,6 @@ function submitSurvey() {
       up_ing = false
     })
 }
-
-$('#up-house').on('change', function() {
-  displayImages(this.files, '#file-list-house', $(this).prev(), 'house')
-})
-
-$('#up-company').on('change', function() {
-  displayImages(this.files, '#file-list-company', $(this).prev(), 'company')
-})
 
 $('#submitBtn').on('click', submitSurvey)
 
