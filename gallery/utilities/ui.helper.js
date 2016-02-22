@@ -1,5 +1,5 @@
 
-var TIMING = 3000
+var TIMING = 2000
 
 module.exports = {
 
@@ -15,11 +15,11 @@ module.exports = {
 
   toastinit: function() {
     $('body').append(Handlebars.compile('{{>toast}}')())
-    $('#toast').on('opened.modal.amui', function() {
-      setTimeout(function() {
-        $(this).modal('close')
-      }.bind(this), TIMING)
-    })
+    // $('#toast').on('opened.modal.amui', function() {
+    //   setTimeout(function() {
+    //     $(this).modal('close')
+    //   }.bind(this), TIMING)
+    // })
   },
 
   toast: function(msg, cb) {
@@ -30,6 +30,10 @@ module.exports = {
         cb()
       }, TIMING)
     }
+  },
+
+  hideToast: function() {
+    $('#toast').modal('close')
   },
 
   alert: function(msg) {

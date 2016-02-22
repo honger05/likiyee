@@ -35,6 +35,11 @@ module.exports = {
   			Img.src = window.webkitURL.createObjectURL(file)
   		}
   		catch (ex) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          Img.src = this.result;
+        }
+        reader.readAsDataURL(file);
   			console.error(ex.message)
   		}
   	}

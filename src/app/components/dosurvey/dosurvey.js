@@ -3,17 +3,10 @@ var isAndroid = (window.navigator.userAgent || '').indexOf('YJS_Android') !== -1
 
 if (isAndroid) {
   require('./cordova.min')
-  require('./cordova.plugin').initialize(function(files, display, selection, type) {
-    displayImages(files, display, selection, type, true)
-  })
+  require('./cordova.plugin').initialize(displayImages)
 } else {
-  $('#up-house').on('change', function() {
-    displayImages(this.files, '#file-list-house', $(this).prev(), 'house')
-  })
-
-  $('#up-company').on('change', function() {
-    displayImages(this.files, '#file-list-company', $(this).prev(), 'company')
-  })
+  addListener('house')
+  addListener('company')
 }
 
 
@@ -64,6 +57,7 @@ function requestSurveyDetail() {
       var apply = data.content
       if (!apply) {
         Utils.UI.toast('该笔申请无数据')
+        return
       }
       switch (apply.customerType) {
         case "001":
@@ -196,6 +190,7 @@ function submitSurvey() {
   }
 
   up_ing = true
+  Utils.UI.toast('正在上传...')
   $.post(Utils.URL.SURVEY_SAVE, req_data)
     .done(function(data) {
       if (data.status === 'success') {
@@ -207,6 +202,19 @@ function submitSurvey() {
     .always(function() {
       up_ing = false
     })
+}
+
+function addListener(type) {
+  $('#up-' + type + '-btn').on('click', function() {
+    var that = this
+    var $input = $('<input type="file" accept="image/*" multiple style="display:none">')
+    $input.change(function() {
+      displayImages(this.files, '#file-list-' + type, $(that), type)
+      $input.remove()
+    })
+    $('body').append($input)
+    $input.click()
+  })
 }
 
 $('#submitBtn').on('click', submitSurvey)

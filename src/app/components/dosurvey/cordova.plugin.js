@@ -21,20 +21,8 @@ var phone_gap = {
   // The scope of 'this' is the event. In order to call the 'receivedEvent'
   // function, we must explicity call 'app.receivedEvent(...);'
   onDeviceReady: function() {
-    $('#up-house').on('click', function() {
-      var that = this;
-      phone_gap.chooseImage(function(files) {
-        files = JSON.parse(files)
-        phone_gap.successCB(files, '#file-list-house', $(that).prev(), 'house')
-      }, phone_gap.errorCB)
-    })
-    $('#up-company').on('click', function() {
-      var that = this;
-      phone_gap.chooseImage(function(files) {
-        files = JSON.parse(files)
-        phone_gap.successCB(files, '#file-list-company', $(that).prev(), 'company')
-      }, phone_gap.errorCB)
-    })
+    phone_gap.addListener('house')
+    phone_gap.addListener('company')
   },
 
   selectPicture: function() {
@@ -50,21 +38,40 @@ var phone_gap = {
   },
 
   chooseImage: function(sucCallback, failCallback) {
-    sucCallback = sucCallback || function(){};
+    var new_sucCallback = function(data){
+      data = JSON.parse(data)
+      sucCallback(data)
+    };
     failCallback = failCallback || function(){};
-    cordova.exec(sucCallback, failCallback, "YJSPlugin", "chooseimage", []);
+    cordova.exec(new_sucCallback, failCallback, "YJSPlugin", "chooseimage", []);
   },
 
   getlocalFile: function(localFiles, cb) {
-    localFiles = JSON.parse(localFiles)
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-      localFiles.forEach(function(file) {
-        fileSystem.root.getFile(file, null, function(fileEntry) {
-          cb([fileEntry])
+      var fileArray = []
+      localFiles.forEach(function(filePath, index) {
+        fileSystem.root.getFile(filePath, null, function(fileEntry) {
+          fileEntry.file(function(file) {
+            fileArray.push(file)
+            if (index === localFiles.length - 1) {
+              cb(fileArray)
+            }
+          })
         }, function() {
-          alert(11)
+          alert('文件拉取失败')
         })
       })
+    })
+  },
+
+  addListener: function(type) {
+    $('#up-' + type + '-btn').on('click', function() {
+      var that = this;
+      phone_gap.chooseImage(function(filePaths) {
+        phone_gap.getlocalFile(filePaths, function(fileEntrys) {
+          phone_gap.successCB(fileEntrys, '#file-list-' + type, $(that), type, false)
+        })
+      }, phone_gap.errorCB)
     })
   }
 
